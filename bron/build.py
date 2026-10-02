@@ -27,6 +27,7 @@ PAGES = {  # pagina -> sjabloon
     "performance-scan": "scan.html",
     "contact": "contact.html",
     "privacy": "privacy.html",
+    "disclaimer": "disclaimer.html",
 }
 
 # Oude Wix-adressen -> nieuwe pagina (alleen in de echte site)

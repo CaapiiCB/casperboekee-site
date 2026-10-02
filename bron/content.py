@@ -87,6 +87,10 @@ EN = {
             "title": "Privacy | Casper Boekee",
             "desc": "How Casper Boekee Personal Training handles the details you send through the contact form.",
         },
+        "disclaimer": {
+            "title": "Disclaimer | Casper Boekee",
+            "desc": "Disclaimer of Casper Boekee Personal Training: information on this website, no medical advice, training responsibility and liability.",
+        },
     },
     "home": {
         "eyebrow": "Personal trainer · Amsterdam",
@@ -340,6 +344,20 @@ EN = {
             ("Your rights", ["You can ask me to see, correct or delete your data at any time by emailing info@casperboekee.com. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens)."]),
         ],
     },
+    "disclaimer": {
+        "eyebrow": "Disclaimer",
+        "h1": "Disclaimer",
+        "updated": "Last updated: 2 October 2026",
+        "sections": [
+            ("Information on this website", ["The information on casperboekee.com is general and meant as information only. It is not personal advice and not medical advice. I do my best to keep everything correct and up to date, but I can't guarantee that it is always complete or free of errors.", "Prices and offers on this website may change. The price that applies is the one we agree on before you start."]),
+            ("Not medical advice", ["I am a personal trainer, not a doctor or physiotherapist. My training, assessments and advice are not a medical examination and don't give a diagnosis.", "Do you have a medical condition, an injury, high blood pressure, heart problems, are you pregnant or taking medication? Check with your GP or specialist before you start training. Let me know about anything that may affect your training, so I can adjust it."]),
+            ("Training and your own responsibility", ["Training always carries some risk of injury. I coach carefully and adjust every session to your level, but you are responsible for telling me how you feel and for stopping when something doesn't feel right.", "Follow my instructions during sessions and tell me straight away if you feel pain, dizziness or anything unusual."]),
+            ("Liability", ["I am not liable for damage or injury resulting from the use of information on this website, or from training outside my supervision.", "This doesn't limit liability that by law cannot be limited, such as damage caused by intent or gross negligence."]),
+            ("Links to other websites", ["This website links to other websites, such as Instagram, WhatsApp and Google Maps. I am not responsible for the content or privacy practices of those websites."]),
+            ("Copyright", ["All texts, photos and videos on this website belong to Casper Boekee Personal Training, unless stated otherwise. You may not copy or use them without my written permission."]),
+            ("Questions", ["Questions about this disclaimer? Email info@casperboekee.com."]),
+        ],
+    },
     "notfound": {"h1": "Page not found", "p": "This page doesn't exist (any more).", "link": "Back to home"},
 }
 
@@ -389,6 +407,10 @@ NL = {
         "privacy": {
             "title": "Privacy | Casper Boekee",
             "desc": "Hoe Casper Boekee Personal Training omgaat met de gegevens die je via het contactformulier stuurt.",
+        },
+        "disclaimer": {
+            "title": "Disclaimer | Casper Boekee",
+            "desc": "Disclaimer van Casper Boekee Personal Training: informatie op deze website, geen medisch advies, eigen verantwoordelijkheid en aansprakelijkheid.",
         },
     },
     "home": {
@@ -641,6 +663,20 @@ NL = {
             ("Hoe lang", ["Ik bewaar je aanvraag zolang dat nodig is om hem af te handelen. Word je geen klant, dan verwijder ik hem binnen 12 maanden."]),
             ("Wie verwerkt het nog meer", ["Het formulier wordt door Web3Forms bij mijn mailbox afgeleverd. Mijn e-mail staat bij Google. Deze website staat bij GitHub Pages, dat voor de beveiliging IP-adressen van bezoekers vastlegt, en laadt de lettertypes van Google Fonts.", "Deze website gebruikt geen statistieken of tracking-cookies."]),
             ("Jouw rechten", ["Je kunt me altijd vragen je gegevens in te zien, te corrigeren of te verwijderen via info@casperboekee.com. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens."]),
+        ],
+    },
+    "disclaimer": {
+        "eyebrow": "Disclaimer",
+        "h1": "Disclaimer",
+        "updated": "Laatst bijgewerkt: 2 oktober 2026",
+        "sections": [
+            ("Informatie op deze website", ["De informatie op casperboekee.com is algemeen en alleen bedoeld als informatie. Het is geen persoonlijk advies en geen medisch advies. Ik doe mijn best om alles juist en actueel te houden, maar kan niet garanderen dat het altijd volledig en foutloos is.", "Prijzen en aanbiedingen op deze website kunnen veranderen. De prijs die geldt, is de prijs die we samen afspreken voordat je start."]),
+            ("Geen medisch advies", ["Ik ben personal trainer, geen arts of fysiotherapeut. Mijn trainingen, metingen en adviezen zijn geen medisch onderzoek en geven geen diagnose.", "Heb je een medische aandoening, een blessure, hoge bloeddruk of hartklachten, ben je zwanger of gebruik je medicijnen? Overleg dan eerst met je huisarts of specialist voordat je gaat trainen. Vertel mij alles wat invloed kan hebben op je training, zodat ik die kan aanpassen."]),
+            ("Trainen en je eigen verantwoordelijkheid", ["Trainen brengt altijd een zeker risico op blessures met zich mee. Ik coach zorgvuldig en stem elke training af op jouw niveau, maar jij bent er zelf verantwoordelijk voor om aan te geven hoe je je voelt en te stoppen als iets niet goed voelt.", "Volg tijdens de training mijn aanwijzingen op en meld het direct als je pijn hebt, duizelig wordt of iets anders vreemds merkt."]),
+            ("Aansprakelijkheid", ["Ik ben niet aansprakelijk voor schade of letsel door het gebruik van informatie op deze website, of door trainen zonder mijn begeleiding.", "Dit beperkt geen aansprakelijkheid die volgens de wet niet beperkt mag worden, zoals bij schade door opzet of grove nalatigheid."]),
+            ("Links naar andere websites", ["Deze website linkt naar andere websites, zoals Instagram, WhatsApp en Google Maps. Ik ben niet verantwoordelijk voor de inhoud of het privacybeleid van die websites."]),
+            ("Auteursrecht", ["Alle teksten, foto's en video's op deze website zijn van Casper Boekee Personal Training, tenzij anders vermeld. Je mag ze niet kopiëren of gebruiken zonder mijn schriftelijke toestemming."]),
+            ("Vragen", ["Vragen over deze disclaimer? Mail naar info@casperboekee.com."]),
         ],
     },
     "notfound": {"h1": "Pagina niet gevonden", "p": "Deze pagina bestaat niet (meer).", "link": "Terug naar home"},
