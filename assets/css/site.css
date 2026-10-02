@@ -399,3 +399,4 @@ a:hover > .link .ico, a:hover .link .ico { transform: translateX(4px); }
 h3 .badge { margin-left: .5rem; position: relative; top: -.15em; }
 .badge--hero { margin: 0 0 1rem; }
 .soon-note { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: 2rem; padding: 1.1rem 1.25rem; border: 1px solid var(--accent); color: var(--soft); }
+.disclaimer { margin-top: 1.75rem; max-width: 46rem; color: var(--muted); font-size: .9375rem; }
