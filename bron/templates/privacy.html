@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+<div class="page-top"></div>
+<section class="section prose-page">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">{{ t.privacy.eyebrow }}</p>
+    <h1 class="h-xl">{{ t.privacy.h1 }}</h1>
+    <p class="muted">{{ t.privacy.updated }}</p>
+    {%- for title, paras in t.privacy.sections %}
+    <h2 class="h-md">{{ title }}</h2>
+    {%- for p in paras %}
+    <p>{{ p }}</p>
+    {%- endfor %}
+    {%- endfor %}
+  </div>
+</section>
+{% endblock %}

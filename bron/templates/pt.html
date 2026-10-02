@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+{{ m.page_hero(t.pt.eyebrow, t.pt.h1, t.pt.sub, t.pt.lead, 'hero-pt', t.pt.hero_alt) }}
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(t.pt.feat_eyebrow, t.pt.feat_h) }}
+    {{ m.features(t.pt.features) }}
+  </div>
+</section>
+
+<section class="section split">
+  <div class="wrap split__grid">
+    <div class="split__media">{{ m.img('pt-mid', t.pt.mid_alt, '(min-width: 900px) 50vw, 100vw') }}</div>
+    <div class="split__body">
+      <p class="eyebrow">{{ t.pt.who_eyebrow }}</p>
+      <h2 class="h-xl">{{ t.pt.who_h }}</h2>
+      <ul class="checks">
+        {%- for w in t.pt.who %}
+        <li>{{ w }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section how">
+  <div class="wrap">
+    {{ m.head(t.how.eyebrow, t.how.h) }}
+    {{ m.steps(t.how.steps) }}
+    <div class="note-block">
+      <p class="eyebrow">{{ t.pt.session_eyebrow }}</p>
+      <h3 class="h-lg">{{ t.pt.session_h }}</h3>
+      <p>{{ t.pt.session_p }}</p>
+    </div>
+  </div>
+</section>
+
+{{ m.prices() }}
+{{ m.faq(t.pt.faq) }}
+{{ m.cta_band() }}
+{% endblock %}

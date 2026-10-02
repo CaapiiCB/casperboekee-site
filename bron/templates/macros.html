@@ -1,0 +1,205 @@
+{# Herbruikbare onderdelen #}
+
+{% macro icon(name) -%}
+{%- if name == 'arrow' -%}
+<svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+{%- elif name == 'chat' -%}
+<svg class="ico" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.3 7.5L3.5 20.5l1.4-4.6a8.4 8.4 0 1 1 15.6-4.3z"/></svg>
+{%- elif name == 'plus' -%}
+<svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro img(name, alt, sizes, cls='', eager=false) -%}
+{%- set widths = images[name][0] -%}{%- set ratio = images[name][1] -%}
+<img{% if cls %} class="{{ cls }}"{% endif %} src="{{ root }}assets/img/{{ name }}-{{ widths[-1] }}.webp" srcset="{% for w in widths %}{{ root }}assets/img/{{ name }}-{{ w }}.webp {{ w }}w{{ ', ' if not loop.last }}{% endfor %}" sizes="{{ sizes }}" width="{{ widths[0] }}" height="{{ (widths[0] / ratio)|round|int }}" alt="{{ alt }}" {% if eager %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}>
+{%- endmacro %}
+
+{% macro head(eyebrow, title, tag='h2') -%}
+<header class="sec-head">
+  <p class="eyebrow">{{ eyebrow }}</p>
+  <{{ tag }} class="h-xl">{{ title }}</{{ tag }}>
+</header>
+{%- endmacro %}
+
+{% macro steps(items) -%}
+<ol class="steps">
+  {%- for title, text in items %}
+  <li class="step">
+    <span class="step__n" aria-hidden="true">{{ loop.index }}</span>
+    <h3 class="h-md">{{ title }}</h3>
+    <p>{{ text }}</p>
+  </li>
+  {%- endfor %}
+</ol>
+{%- endmacro %}
+
+{% macro features(items) -%}
+<ul class="features">
+  {%- for title, text in items %}
+  <li class="feature">
+    <h3 class="h-md">{{ title }}</h3>
+    <p>{{ text }}</p>
+  </li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro prices(heading=true) -%}
+<section class="section prices" id="prices">
+  <div class="wrap">
+    {% if heading %}{{ head(t.prices.eyebrow, t.prices.h) }}{% endif %}
+    <div class="price-grid">
+      <article class="price">
+        <div class="price__row">
+          <span class="price__qty">{{ t.prices.single.qty }}</span>
+          <span class="price__unit">{{ t.prices.single.unit[0] }}<br>{{ t.prices.single.unit[1] }}</span>
+          <span class="price__slash" aria-hidden="true"></span>
+          <span class="price__amt">{{ site.price_single }}</span>
+        </div>
+        <p class="price__meta">{{ t.prices.single.meta }}</p>
+      </article>
+      <article class="price price--top">
+        <p class="price__tag">{{ t.prices.ten.tag }}</p>
+        <div class="price__row">
+          <span class="price__qty">{{ t.prices.ten.qty }}</span>
+          <span class="price__unit">{{ t.prices.ten.unit[0] }}<br>{{ t.prices.ten.unit[1] }}</span>
+          <span class="price__slash" aria-hidden="true"></span>
+          <span class="price__amt">{{ site.price_ten }}</span>
+        </div>
+        <p class="price__meta">{{ t.prices.ten.meta }}</p>
+        <ul class="price__plus">
+          {%- for p in t.prices.ten.plus %}
+          <li>{{ icon('plus') }}<span>{{ p }}</span></li>
+          {%- endfor %}
+        </ul>
+      </article>
+    </div>
+    <div class="price-notes">
+      <p><a href="{{ href('performance-scan') }}">{{ t.prices.scan }}</a></p>
+      <p>{{ t.prices.pay }}</p>
+    </div>
+    <div class="price-cta">
+      <p>{{ t.prices.start }}</p>
+      <a class="btn" href="{{ cta_href }}">{{ t.cta }}</a>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro faq(keys, heading=true) -%}
+<section class="section faq" id="faq">
+  <div class="wrap wrap--narrow">
+    {% if heading %}{{ head(t.faq.eyebrow, t.faq.h) }}{% endif %}
+    <div class="faq__list">
+      {%- for k in keys %}
+      <details class="faq__item">
+        <summary><span>{{ t.faq['items'][k][0] }}</span>{{ icon('plus') }}</summary>
+        <p>{{ t.faq['items'][k][1] }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro form(interest_default=0) -%}
+<form class="form" id="intro-form" method="post"{% if not preview %} action="{{ site.form_endpoint }}"{% endif %} data-endpoint="{{ site.form_endpoint }}" data-key="{{ site.form_key }}" novalidate>
+  <input type="hidden" name="access_key" value="{{ site.form_key }}">
+  <input type="hidden" name="subject" value="{{ t.contact.form.subject }}">
+  <input type="hidden" name="from_name" value="casperboekee.com">
+  <input type="hidden" name="language" value="{{ t.lang }}">
+  <input type="checkbox" name="botcheck" id="f-botcheck" class="form__hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="field">
+    <label for="f-name">{{ t.contact.form.name }}</label>
+    <input id="f-name" name="name" type="text" autocomplete="name" required>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="f-email">{{ t.contact.form.email }}</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+    </div>
+    <div class="field">
+      <label for="f-phone">{{ t.contact.form.phone }}</label>
+      <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+    </div>
+  </div>
+  <div class="field">
+    <label for="f-interest">{{ t.contact.form.interest }}</label>
+    <select id="f-interest" name="interest">
+      {%- for o in t.contact.form.options %}
+      <option{{ ' selected' if loop.index0 == interest_default }}>{{ o }}</option>
+      {%- endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="f-message">{{ t.contact.form.message }}</label>
+    <textarea id="f-message" name="message" rows="4" placeholder="{{ t.contact.form.placeholder }}" required></textarea>
+  </div>
+  <button class="btn btn--block" type="submit" data-label="{{ t.contact.form.submit }}" data-sending="{{ t.contact.form.sending }}">{{ t.contact.form.submit }}</button>
+  <p class="form__status" role="status" aria-live="polite" hidden
+     data-success="{{ t.contact.form.success }}" data-error="{{ t.contact.form.error }}" data-demo="{{ t.contact.form.demo }}"></p>
+  <p class="form__fine">{{ t.contact.form.privacy }} <a href="{{ href('privacy') }}">{{ t.contact.form.privacy_link }}</a></p>
+</form>
+{%- endmacro %}
+
+{% macro contact_details() -%}
+<dl class="details">
+  <div><dt>{{ t.contact.labels.whatsapp }}</dt><dd><a href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">{{ site.phone_display }}</a></dd></div>
+  <div><dt>{{ t.contact.labels.email }}</dt><dd><a href="mailto:{{ site.email }}" data-goatcounter-click="email">{{ site.email }}</a></dd></div>
+  <div><dt>{{ t.contact.labels.location }}</dt><dd>{{ site.gym }}<br>{{ site.street }}, {{ site.postcode }} {{ site.city }}<br><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ t.contact.labels.route }}</a></dd></div>
+  <div><dt>{{ t.contact.labels.instagram }}</dt><dd><a href="{{ site.instagram }}" target="_blank" rel="noopener">@casperboekee</a></dd></div>
+</dl>
+{%- endmacro %}
+
+{% macro contact_section(tag='h2', eyebrow=None, title=None, lead=None, interest_default=0) -%}
+<section class="section contact" id="contact">
+  <div class="wrap contact__grid">
+    <div class="contact__intro">
+      <p class="eyebrow">{{ eyebrow or t.contact.eyebrow }}</p>
+      <{{ tag }} class="h-xl">{{ title or t.contact.h }}</{{ tag }}>
+      <p class="lead">{{ lead or t.contact.lead }}</p>
+      <ul class="checks">
+        {%- for p in t.contact.points %}
+        <li>{{ p }}</li>
+        {%- endfor %}
+      </ul>
+      <p class="contact__direct">{{ t.contact.direct }}</p>
+      {{ contact_details() }}
+    </div>
+    <div class="contact__form">
+      {{ form(interest_default) }}
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro cta_band(title=None, text=None, label=None) -%}
+<section class="cta-band">
+  <div class="wrap cta-band__in">
+    <div>
+      <h2 class="h-xl">{{ title or t.cta_band.h }}</h2>
+      <p>{{ text or t.cta_band.p }}</p>
+    </div>
+    <div class="cta-band__actions">
+      <a class="btn btn--dark" href="{{ cta_href }}">{{ label or t.cta }}</a>
+      <a class="btn btn--line-dark" href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">{{ icon('chat') }}<span>{{ t.cta_wa }}</span></a>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro page_hero(eyebrow, h1, sub, lead, image, alt) -%}
+<section class="phero">
+  <div class="phero__media">{{ img(image, alt, '100vw', '', true) }}</div>
+  <div class="wrap phero__body">
+    <p class="eyebrow">{{ eyebrow }}</p>
+    <h1 class="phero__title"><span>{{ h1 }}</span>{% if sub %}<span class="phero__sub">{{ sub }}</span>{% endif %}</h1>
+    <p class="lead">{{ lead }}</p>
+    <div class="cta-row">
+      <a class="btn" href="{{ cta_href }}">{{ t.cta }}</a>
+      <a class="btn btn--ghost" href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">{{ icon('chat') }}<span>{{ t.cta_wa }}</span></a>
+    </div>
+  </div>
+</section>
+{%- endmacro %}

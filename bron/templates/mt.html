@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+{{ m.page_hero(t.mt.eyebrow, t.mt.h1, t.mt.sub, t.mt.lead, 'hero-mt', t.mt.hero_alt) }}
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(t.mt.feat_eyebrow, t.mt.feat_h) }}
+    {{ m.features(t.mt.features) }}
+  </div>
+</section>
+
+<section class="section split">
+  <div class="wrap split__grid">
+    <div class="split__media">{{ m.img('g-elbowside', t.gallery_alts['g-elbowside'], '(min-width: 900px) 50vw, 100vw') }}</div>
+    <div class="split__body">
+      <p class="eyebrow">{{ t.mt.who_eyebrow }}</p>
+      <h2 class="h-xl">{{ t.mt.who_h }}</h2>
+      <dl class="levels">
+        {%- for title, text in t.mt.levels %}
+        <div><dt>{{ title }}</dt><dd>{{ text }}</dd></div>
+        {%- endfor %}
+      </dl>
+      <p class="muted">{{ t.mt.combine }}</p>
+    </div>
+  </div>
+</section>
+
+{% if site.clips or preview %}
+<section class="section clips" id="clips">
+  <div class="wrap">
+    {% if site.clips %}
+    <div class="clips__layout">
+    <div class="clips__text">
+      {{ m.head(t.mt.clips_eyebrow, t.mt.clips_h) }}
+      <p class="lead">{{ t.mt.clips_p }}</p>
+      <div class="cta-row">
+        <a class="btn" href="{{ cta_href }}">{{ t.cta }}</a>
+      </div>
+    </div>
+    <div class="clips__grid">
+      {%- for c in site.clips %}
+      <video controls playsinline loop preload="none" width="{{ c.w }}" height="{{ c.h }}" poster="{{ root }}{{ c.poster }}"><source src="{{ root }}{{ c.src }}" type="video/mp4"></video>
+      {%- endfor %}
+    </div>
+    </div>
+    {% else %}
+    {{ m.head(t.mt.clips_eyebrow, t.mt.clips_h) }}
+    <div class="placeholder">{{ t.mt.clips_placeholder }}</div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section gallery gallery--plain">
+  <div class="gallery__scroller">
+    <ul class="gallery__grid gallery__grid--three">
+      <li class="g">{{ m.img('g-gloveclose', t.gallery_alts['g-gloveclose'], '(min-width: 900px) 33vw, 82vw') }}</li>
+      <li class="g">{{ m.img('g-elbowcorner', t.gallery_alts['g-elbowcorner'], '(min-width: 900px) 33vw, 82vw') }}</li>
+      <li class="g">{{ m.img('g-clinch', t.gallery_alts['g-clinch'], '(min-width: 900px) 33vw, 82vw') }}</li>
+    </ul>
+  </div>
+</section>
+
+{{ m.prices() }}
+{{ m.faq(t.mt.faq) }}
+{{ m.cta_band() }}
+{% endblock %}

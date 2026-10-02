@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+<section class="hero">
+  <div class="hero__media">
+    <picture>
+      <source media="(min-width: 900px)" srcset="{{ root }}assets/img/hero-wide-1100.webp 1100w, {{ root }}assets/img/hero-wide-1800.webp 1800w" sizes="62vw">
+      <img src="{{ root }}assets/img/hero-tall-1000.webp" srcset="{{ root }}assets/img/hero-tall-640.webp 640w, {{ root }}assets/img/hero-tall-1000.webp 1000w" sizes="100vw" width="640" height="800" alt="{{ t.home.hero_alt }}" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="wrap hero__body">
+    <p class="eyebrow">{{ t.home.eyebrow }}</p>
+    <h1 class="lockup">
+      <span class="lockup__a">{{ t.home.lockup[0] }}</span>
+      <span class="lockup__b">{{ t.home.lockup[1] }}</span>
+      <span class="lockup__c">{{ t.home.lockup[2] }}</span>
+    </h1>
+    <p class="lead">{{ t.home.lead }}</p>
+    <div class="cta-row">
+      <a class="btn" href="{{ cta_href }}">{{ t.cta }}</a>
+      <a class="btn btn--ghost" href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">{{ m.icon('chat') }}<span>{{ t.cta_wa }}</span></a>
+    </div>
+    <p class="cta-note">{{ t.cta_note }}</p>
+    <ul class="chips">
+      {%- for c in t.chips %}
+      <li>{{ c }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section services" id="training">
+  <div class="wrap">
+    {{ m.head(t.home.services_eyebrow, t.home.services_h) }}
+    <div class="svc-grid">
+      <a class="svc" href="{{ href('personal-training') }}">
+        <div class="svc__media">{{ m.img('card-pt', t.services.pt.alt, '(min-width: 900px) 50vw, 100vw') }}</div>
+        <div class="svc__body">
+          <p class="svc__sub">{{ t.services.pt.sub }}</p>
+          <h3 class="h-lg">{{ t.services.pt.title }}</h3>
+          <p>{{ t.services.pt.text }}</p>
+          <p class="svc__meta">{{ t.services.pt.meta }}</p>
+          <span class="link">{{ t.services.pt.link }}{{ m.icon('arrow') }}</span>
+        </div>
+      </a>
+      <a class="svc" href="{{ href('muay-thai') }}">
+        <div class="svc__media">{{ m.img('card-mt', t.services.mt.alt, '(min-width: 900px) 50vw, 100vw') }}</div>
+        <div class="svc__body">
+          <p class="svc__sub">{{ t.services.mt.sub }}</p>
+          <h3 class="h-lg">{{ t.services.mt.title }}</h3>
+          <p>{{ t.services.mt.text }}</p>
+          <p class="svc__meta">{{ t.services.mt.meta }}</p>
+          <span class="link">{{ t.services.mt.link }}{{ m.icon('arrow') }}</span>
+        </div>
+      </a>
+    </div>
+    <a class="scan-strip" href="{{ href('performance-scan') }}">
+      <div>
+        <h3 class="h-lg">{{ t.services.scan.title }}</h3>
+        <p>{{ t.services.scan.text }}</p>
+      </div>
+      <div class="scan-strip__side">
+        <p class="svc__meta">{{ t.services.scan.meta }}</p>
+        <span class="link">{{ t.services.scan.link }}{{ m.icon('arrow') }}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band__media">{{ m.img('band', t.home.band_alt, '100vw') }}</div>
+  <div class="wrap band__body">
+    <span class="slash" aria-hidden="true"></span>
+    <p class="band__text">{{ t.home.band }}</p>
+  </div>
+</section>
+
+<section class="section how" id="how">
+  <div class="wrap">
+    {{ m.head(t.how.eyebrow, t.how.h) }}
+    {{ m.steps(t.how.steps) }}
+  </div>
+</section>
+
+{{ m.prices() }}
+
+<section class="section about" id="about">
+  <div class="wrap about__grid">
+    <div class="about__media">{{ m.img('about', t.about.alt, '(min-width: 900px) 40vw, 100vw') }}</div>
+    <div class="about__body">
+      <p class="eyebrow">{{ t.about.eyebrow }}</p>
+      <h2 class="h-xl">{{ t.about.h }}</h2>
+      {%- for p in t.about.p %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+      <ul class="chips">
+        {%- for c in t.about.chips %}
+        <li>{{ c }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section gallery" id="gallery">
+  <div class="wrap">
+    {{ m.head(t.home.gallery_eyebrow, t.home.gallery_h) }}
+  </div>
+  <div class="gallery__scroller">
+    <ul class="gallery__grid">
+      <li class="g g--a">{{ m.img('g-elbowside', t.gallery_alts['g-elbowside'], '(min-width: 900px) 36vw, 82vw') }}</li>
+      <li class="g g--b">{{ m.img('g-gloveclose', t.gallery_alts['g-gloveclose'], '(min-width: 900px) 36vw, 82vw') }}</li>
+      <li class="g g--tall">{{ m.img('g-intense', t.gallery_alts['g-intense'], '(min-width: 900px) 26vw, 60vw') }}</li>
+      <li class="g g--c">{{ m.img('g-elbowcorner', t.gallery_alts['g-elbowcorner'], '(min-width: 900px) 36vw, 82vw') }}</li>
+      <li class="g g--d">{{ m.img('g-clinch', t.gallery_alts['g-clinch'], '(min-width: 900px) 36vw, 82vw') }}</li>
+    </ul>
+  </div>
+</section>
+
+{% if site.reviews %}
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    {{ m.head(t.home.reviews_eyebrow, t.home.reviews_h) }}
+    <ul class="reviews__grid">
+      {%- for r in site.reviews %}
+      <li class="review"><blockquote><p>{{ r.text[t.lang] if r.text is mapping else r.text }}</p></blockquote><p class="review__name">{{ r.name }}</p></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{{ m.faq(['results', 'one', 'coaching', 'mt', 'mt_expect', 'beginners', 'where', 'book', 'pay']) }}
+
+{{ m.contact_section() }}
+{% endblock %}

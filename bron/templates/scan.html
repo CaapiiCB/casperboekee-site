@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+{{ m.page_hero(t.scan.eyebrow, t.scan.h1, t.scan.sub, t.scan.lead, 'hero-scan', t.scan.hero_alt) }}
+
+<section class="section">
+  <div class="wrap">
+    <div class="intro-row">
+      <p class="lead lead--big">{{ t.scan.intro }}</p>
+      <dl class="facts">
+        {%- for k, v in t.scan.facts %}
+        <div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>
+        {%- endfor %}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(t.scan.feat_eyebrow, t.scan.feat_h) }}
+    {{ m.features(t.scan.features) }}
+  </div>
+</section>
+
+<section class="section how">
+  <div class="wrap">
+    {{ m.head(t.scan.how_eyebrow, t.scan.how_h) }}
+    {{ m.steps(t.scan.steps) }}
+  </div>
+</section>
+
+<section class="section invest">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">{{ t.scan.invest_eyebrow }}</p>
+    <p class="invest__amt">{{ site.price_scan }}</p>
+    <p class="lead">{{ t.scan.invest_p }}</p>
+  </div>
+</section>
+
+{{ m.cta_band(t.scan.cta, t.scan.cta_p, t.scan.cta_btn) }}
+{% endblock %}

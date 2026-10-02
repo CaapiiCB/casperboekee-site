@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="page-top"></div>
+<section class="section prose-page">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">404</p>
+    <h1 class="h-xl">{{ t.notfound.h1 }}</h1>
+    <p class="lead">{{ t.notfound.p }}</p>
+    <p><a class="btn" href="{{ href('home') }}">{{ t.notfound.link }}</a></p>
+  </div>
+</section>
+{% endblock %}

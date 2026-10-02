@@ -1,0 +1,122 @@
+{%- import "macros.html" as m with context -%}
+{%- if not fragment -%}
+<!doctype html>
+<html lang="{{ t.html_lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% endif -%}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
+{% if not preview -%}
+<link rel="canonical" href="{{ abs_url }}">
+{% for l, u in alternates -%}
+<link rel="alternate" hreflang="{{ l }}" href="{{ u }}">
+{% endfor -%}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Casper Boekee">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ abs_url }}">
+<meta property="og:image" content="{{ site.base_url }}assets/img/og.jpg">
+<meta property="og:locale" content="{{ 'nl_NL' if t.lang == 'nl' else 'en_GB' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="google-site-verification" content="{{ site.google_verification }}">
+<meta name="msvalidate.01" content="{{ site.bing_verification }}">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="format-detection" content="telephone=no">
+{% if noindex %}<meta name="robots" content="noindex">
+{% endif -%}
+<link rel="icon" href="{{ root }}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% endif -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
+<link rel="stylesheet" href="{{ root }}assets/css/site.css">
+{% if jsonld and not preview -%}
+<script type="application/ld+json">{{ jsonld|safe }}</script>
+{% endif -%}
+{%- if not fragment %}
+</head>
+<body>
+{% endif -%}
+<div class="site{{ ' is-preview' if preview else '' }}" data-page="{{ page }}">
+<a class="skip" href="#main">{{ t.skip }}</a>
+
+<header class="site-header" id="top">
+  <div class="wrap site-header__in">
+    <a class="logo" href="{{ href('home') }}" aria-label="Casper Boekee Personal Trainer">
+      <span class="logo__mark" aria-hidden="true"><span class="logo__c">C</span><span class="logo__b">B</span></span>
+      <span class="logo__text" aria-hidden="true">{{ t.logo_sub[0] }}<br>{{ t.logo_sub[1] }}</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="{{ t.menu }}">
+      <a href="{{ href('personal-training') }}"{{ ' aria-current="page"'|safe if page == 'personal-training' }}>{{ t.nav['personal-training'] }}</a>
+      <a href="{{ href('muay-thai') }}"{{ ' aria-current="page"'|safe if page == 'muay-thai' }}>{{ t.nav['muay-thai'] }}</a>
+      <a href="{{ href('performance-scan') }}"{{ ' aria-current="page"'|safe if page == 'performance-scan' }}>{{ t.nav['performance-scan'] }}</a>
+      <a href="{{ href('home', 'prices') }}">{{ t.nav['prices'] }}</a>
+      <a class="nav__contact" href="{{ href('contact') }}"{{ ' aria-current="page"'|safe if page == 'contact' }}>{{ t.nav['contact'] }}</a>
+      {%- if site.client_portal_url %}
+      <a href="{{ site.client_portal_url }}">{{ t.footer.portal }}</a>
+      {%- endif %}
+      <a class="btn nav__cta" href="{{ cta_href }}">{{ t.cta }}</a>
+    </nav>
+    <div class="site-header__tools">
+      <div class="lang" aria-label="Language">
+        <a href="{{ lang_href('en') }}" lang="en" hreflang="en"{{ ' aria-current="true"'|safe if t.lang == 'en' }}>EN</a>
+        <a href="{{ lang_href('nl') }}" lang="nl" hreflang="nl"{{ ' aria-current="true"'|safe if t.lang == 'nl' }}>NL</a>
+      </div>
+      <a class="btn btn--sm site-header__cta" href="{{ cta_href }}">{{ t.cta_short }}</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-open="{{ t.menu }}" data-close="{{ t.close }}">
+        <span class="menu-btn__bars" aria-hidden="true"></span><span class="menu-btn__label">{{ t.menu }}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <div class="site-footer__brand">
+      <a class="logo" href="{{ href('home') }}" aria-label="Casper Boekee Personal Trainer">
+        <span class="logo__mark" aria-hidden="true"><span class="logo__c">C</span><span class="logo__b">B</span></span>
+        <span class="logo__text" aria-hidden="true">{{ t.logo_sub[0] }}<br>{{ t.logo_sub[1] }}</span>
+      </a>
+      <p>{{ site.name }}<br>{{ site.gym }}, {{ site.street }}, {{ site.postcode }} {{ site.city }}</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer">
+      <a href="{{ href('personal-training') }}">{{ t.nav['personal-training'] }}</a>
+      <a href="{{ href('muay-thai') }}">{{ t.nav['muay-thai'] }}</a>
+      <a href="{{ href('performance-scan') }}">{{ t.nav['performance-scan'] }}</a>
+      <a href="{{ href('home', 'prices') }}">{{ t.nav['prices'] }}</a>
+      <a href="{{ href('contact') }}">{{ t.nav['contact'] }}</a>
+      <a href="{{ href('privacy') }}">{{ t.footer.privacy }}</a>
+    </nav>
+    <div class="site-footer__contact">
+      <a href="mailto:{{ site.email }}" data-goatcounter-click="email">{{ site.email }}</a>
+      <a href="tel:{{ site.phone_tel }}" data-goatcounter-click="phone">{{ site.phone_display }}</a>
+      <a href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="wrap site-footer__legal">
+    <span>© {{ site.year }} Casper Boekee. {{ t.footer.rights }}</span>
+    <span>{{ t.footer.kvk }} {{ site.kvk }}</span>
+  </div>
+</footer>
+
+<div class="cta-bar" data-cta-bar>
+  <a class="btn cta-bar__main" href="{{ cta_href }}">{{ t.cta_short }}</a>
+  <a class="btn btn--ghost cta-bar__wa" href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">{{ m.icon('chat') }}<span>WhatsApp</span></a>
+</div>
+</div>
+<script src="{{ root }}assets/js/site.js" defer></script>
+{%- if site.goatcounter and not preview %}
+<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+{%- endif %}
+{%- if not fragment %}
+</body>
+</html>
+{% endif %}
