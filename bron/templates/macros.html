@@ -206,3 +206,10 @@
   </div>
 </section>
 {%- endmacro %}
+
+
+{% macro credit() -%}
+{%- if site.credit_url %}
+<p class="wrap gallery__credit">{{ t.home.credit[0] }}<strong>{{ site.credit_name }}</strong>{{ t.home.credit[1] }} <a href="{{ site.credit_url }}" target="_blank" rel="noopener">{{ t.home.credit[2] }} &rarr;</a></p>
+{%- endif %}
+{%- endmacro %}
