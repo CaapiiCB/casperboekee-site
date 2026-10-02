@@ -76,7 +76,7 @@
       </article>
     </div>
     <div class="price-notes">
-      <p><a href="{{ href('performance-scan') }}">{{ t.prices.scan }}</a></p>
+      <p><a href="{{ href('performance-scan') }}">{{ t.scan_soon.prices if site.scan_soon else t.prices.scan }}</a></p>
       <p>{{ t.prices.pay }}</p>
     </div>
     <div class="price-cta">
@@ -128,7 +128,7 @@
     <label for="f-interest">{{ t.contact.form.interest }}</label>
     <select id="f-interest" name="interest">
       {%- for o in t.contact.form.options %}
-      <option{{ ' selected' if loop.index0 == interest_default }}>{{ o }}</option>
+      <option{{ ' selected' if loop.index0 == interest_default }}>{{ t.scan_soon.option if (site.scan_soon and o == 'Performance Scan') else o }}</option>
       {%- endfor %}
     </select>
   </div>
@@ -189,15 +189,18 @@
 </section>
 {%- endmacro %}
 
-{% macro page_hero(eyebrow, h1, sub, lead, image, alt) -%}
+{% macro page_hero(eyebrow, h1, sub, lead, image, alt, badge=None, cta_label=None) -%}
 <section class="phero">
   <div class="phero__media">{{ img(image, alt, '100vw', '', true) }}</div>
   <div class="wrap phero__body">
     <p class="eyebrow">{{ eyebrow }}</p>
+    {%- if badge %}
+    <p class="badge badge--hero">{{ badge }}</p>
+    {%- endif %}
     <h1 class="phero__title"><span>{{ h1 }}</span>{% if sub %}<span class="phero__sub">{{ sub }}</span>{% endif %}</h1>
     <p class="lead">{{ lead }}</p>
     <div class="cta-row">
-      <a class="btn" href="{{ cta_href }}">{{ t.cta }}</a>
+      <a class="btn" href="{{ cta_href }}">{{ cta_label or t.cta }}</a>
       <a class="btn btn--ghost" href="{{ wa_href }}" data-goatcounter-click="whatsapp" target="_blank" rel="noopener">{{ icon('chat') }}<span>{{ t.cta_wa }}</span></a>
     </div>
   </div>

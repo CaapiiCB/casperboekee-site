@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "macros.html" as m with context %}
 {% block main %}
-{{ m.page_hero(t.scan.eyebrow, t.scan.h1, t.scan.sub, t.scan.lead, 'hero-scan', t.scan.hero_alt) }}
+{{ m.page_hero(t.scan.eyebrow, t.scan.h1, t.scan.sub, t.scan.lead, 'hero-scan', t.scan.hero_alt, t.soon if site.scan_soon else None, t.scan_soon.cta if site.scan_soon else None) }}
 
 <section class="section">
   <div class="wrap">
@@ -13,6 +13,9 @@
         {%- endfor %}
       </dl>
     </div>
+    {%- if site.scan_soon %}
+    <p class="soon-note"><span class="badge">{{ t.soon }}</span>{{ t.scan_soon.note }}</p>
+    {%- endif %}
   </div>
 </section>
 
@@ -58,5 +61,5 @@
   </div>
 </section>
 
-{{ m.cta_band(t.scan.cta, t.scan.cta_p, t.scan.cta_btn) }}
+{% if site.scan_soon %}{{ m.cta_band(t.scan_soon.cta, t.scan_soon.cta_p, t.scan_soon.cta) }}{% else %}{{ m.cta_band(t.scan.cta, t.scan.cta_p, t.scan.cta_btn) }}{% endif %}
 {% endblock %}

@@ -56,7 +56,7 @@
     </div>
     <a class="scan-strip" href="{{ href('performance-scan') }}">
       <div>
-        <h3 class="h-lg">{{ t.services.scan.title }}</h3>
+        <h3 class="h-lg">{{ t.services.scan.title }}{% if site.scan_soon %} <span class="badge">{{ t.soon }}</span>{% endif %}</h3>
         <p>{{ t.services.scan.text }}</p>
       </div>
       <div class="scan-strip__side">

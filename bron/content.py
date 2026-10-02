@@ -29,6 +29,8 @@ SITE = {
     "price_single": "€85",
     "price_ten": "€850",
     "price_scan": "€250",
+    # Performance Scan nog niet te boeken: True = label "Binnenkort" + wachtlijst. Zet op False zodra je hem aanbiedt.
+    "scan_soon": True,
     # Later: link naar de klantomgeving van het PT-systeem. Leeg = knop wordt niet getoond.
     "client_portal_url": "",
     # GoatCounter (cookievrije bezoekersteller): alleen de accountnaam, bv. "casperboekee". Leeg = uit.
@@ -74,8 +76,8 @@ EN = {
             "desc": "1-on-1 Muay Thai training in Amsterdam: technique, padwork and conditioning, from complete beginner to experienced fighter. Free 30-minute intro at Patrick's Gym.",
         },
         "performance-scan": {
-            "title": "Performance Scan Amsterdam | Casper Boekee",
-            "desc": "90-minute performance assessment in Amsterdam with 20+ measurements: heart rate, blood pressure, body composition, posture, mobility, strength and conditioning. Personal report and action plan. €250.",
+            "title": "Performance Scan Amsterdam (coming soon) | Casper Boekee",
+            "desc": "Coming soon: a 90-minute performance assessment in Amsterdam with 20+ measurements: heart rate, blood pressure, body composition, posture, mobility, strength and conditioning. Personal report and action plan. €250.",
         },
         "contact": {
             "title": "Contact & Free Intro | Casper Boekee",
@@ -211,6 +213,14 @@ EN = {
         "rights": "All rights reserved.",
         "privacy": "Privacy",
         "portal": "Client login",
+    },
+    "soon": "Coming soon",
+    "scan_soon": {
+        "note": "The Performance Scan launches soon. Join the waitlist and you'll be the first to know when you can book it.",
+        "prices": "Performance Scan · 90 min · €250 · coming soon. Fully deducted when you start a 10-session package or coaching programme within 14 days.",
+        "cta": "Join the waitlist",
+        "cta_p": "Send me a message through the form or WhatsApp and I'll let you know as soon as the scan is available.",
+        "option": "Performance Scan (waitlist)",
     },
     "cta_band": {"h": "Book your free intro today", "p": "30 minutes at Patrick's Gym. We talk about your goal and see if we're a match."},
     "pt": {
@@ -368,8 +378,8 @@ NL = {
             "desc": "1-op-1 Muay Thai-training in Amsterdam: techniek, padwork en conditie, van complete beginner tot ervaren vechter. Gratis kennismaking van 30 minuten bij Patrick's Gym.",
         },
         "performance-scan": {
-            "title": "Performance Scan Amsterdam | Casper Boekee",
-            "desc": "Performance assessment van 90 minuten in Amsterdam met 20+ metingen: hartslag, bloeddruk, lichaamssamenstelling, houding, mobiliteit, kracht en conditie. Persoonlijk rapport en actieplan. €250.",
+            "title": "Performance Scan Amsterdam (binnenkort) | Casper Boekee",
+            "desc": "Binnenkort: een performance assessment van 90 minuten in Amsterdam met 20+ metingen: hartslag, bloeddruk, lichaamssamenstelling, houding, mobiliteit, kracht en conditie. Persoonlijk rapport en actieplan. €250.",
         },
         "contact": {
             "title": "Contact & gratis kennismaking | Casper Boekee",
@@ -505,6 +515,14 @@ NL = {
         "rights": "Alle rechten voorbehouden.",
         "privacy": "Privacy",
         "portal": "Klantomgeving",
+    },
+    "soon": "Binnenkort",
+    "scan_soon": {
+        "note": "De Performance Scan start binnenkort. Zet je op de wachtlijst, dan hoor je als eerste wanneer je hem kunt boeken.",
+        "prices": "Performance Scan · 90 min · €250 · binnenkort. Wordt volledig verrekend als je binnen 14 dagen start met een 10-sessiepakket of coachingtraject.",
+        "cta": "Zet je op de wachtlijst",
+        "cta_p": "Stuur me een bericht via het formulier of WhatsApp, dan laat ik het je weten zodra de scan beschikbaar is.",
+        "option": "Performance Scan (wachtlijst)",
     },
     "cta_band": {"h": "Plan vandaag je gratis kennismaking", "p": "30 minuten bij Patrick's Gym. We bespreken je doel en kijken of het klikt."},
     "pt": {
