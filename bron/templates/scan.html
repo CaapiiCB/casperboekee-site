@@ -19,7 +19,27 @@
 <section class="section">
   <div class="wrap">
     {{ m.head(t.scan.feat_eyebrow, t.scan.feat_h) }}
-    {{ m.features(t.scan.features) }}
+    <div class="tests">
+      {%- for title, intro, items in t.scan.tests %}
+      <article class="test">
+        <p class="test__n" aria-hidden="true">{{ '%02d' % loop.index }}</p>
+        <h3 class="h-md">{{ title }}</h3>
+        <p class="test__intro">{{ intro }}</p>
+        <ul class="checks">
+          {%- for it in items %}
+          <li>{{ it }}</li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(t.scan.get_eyebrow, t.scan.get_h) }}
+    {{ m.features(t.scan.deliverables) }}
   </div>
 </section>
 
