@@ -54,6 +54,7 @@
       <a href="{{ href('muay-thai') }}"{{ ' aria-current="page"'|safe if page == 'muay-thai' }}>{{ t.nav['muay-thai'] }}</a>
       <a href="{{ href('performance-scan') }}"{{ ' aria-current="page"'|safe if page == 'performance-scan' }}>{{ t.nav['performance-scan'] }}</a>
       <a href="{{ href('home', 'prices') }}">{{ t.nav['prices'] }}</a>
+      <a class="nav__about" href="{{ href('about') }}"{{ ' aria-current="page"'|safe if page == 'about' }}>{{ t.nav['about'] }}</a>
       <a class="nav__contact" href="{{ href('contact') }}"{{ ' aria-current="page"'|safe if page == 'contact' }}>{{ t.nav['contact'] }}</a>
       {%- if site.client_portal_url %}
       <a href="{{ site.client_portal_url }}">{{ t.footer.portal }}</a>
@@ -91,9 +92,18 @@
       <a href="{{ href('muay-thai') }}">{{ t.nav['muay-thai'] }}</a>
       <a href="{{ href('performance-scan') }}">{{ t.nav['performance-scan'] }}</a>
       <a href="{{ href('home', 'prices') }}">{{ t.nav['prices'] }}</a>
+      <a href="{{ href('about') }}">{{ t.nav['about'] }}</a>
+      <a href="{{ href('method') }}">{{ t.nav['method'] }}</a>
+      <a href="{{ href('faq') }}">{{ t.nav['faq'] }}</a>
       <a href="{{ href('contact') }}">{{ t.nav['contact'] }}</a>
       <a href="{{ href('privacy') }}">{{ t.footer.privacy }}</a>
       <a href="{{ href('disclaimer') }}">Disclaimer</a>
+    </nav>
+    <nav class="site-footer__nav site-footer__more" aria-label="{{ t.footer.more_h }}">
+      <p class="site-footer__h">{{ t.footer.more_h }}</p>
+      {%- for k, v in t.lp.items() %}
+      <a href="{{ href(k) }}">{{ v.h1 }}</a>
+      {%- endfor %}
     </nav>
     <div class="site-footer__contact">
       <a href="mailto:{{ site.email }}" data-goatcounter-click="email">{{ site.email }}</a>

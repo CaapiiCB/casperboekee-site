@@ -28,6 +28,12 @@ PAGES = {  # pagina -> sjabloon
     "contact": "contact.html",
     "privacy": "privacy.html",
     "disclaimer": "disclaimer.html",
+    "about": "about.html",
+    "method": "method.html",
+    "faq": "faq.html",
+    "muay-thai-beginners": "lp.html",
+    "personal-training-amsterdam-west": "lp.html",
+    "pain-free-strength": "lp.html",
 }
 
 # Oude Wix-adressen -> nieuwe pagina (alleen in de echte site)
@@ -107,6 +113,8 @@ def jsonld(lang, page, t):
         "home": ["results", "one", "coaching", "mt", "mt_expect", "beginners", "where", "book", "pay"],
         "personal-training": t["pt"]["faq"],
         "muay-thai": t["mt"]["faq"],
+        "faq": [k for _, ks in t["faq_page"]["groups"] for k in ks],
+        **{k: v["faq"] for k, v in t["lp"].items()},
     }.get(page)
     if faq_keys:
         graph.append({

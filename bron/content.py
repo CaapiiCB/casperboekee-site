@@ -691,4 +691,431 @@ if SITE["goatcounter"]:
     EN["privacy"]["sections"][4][1][1] = "To see how the website is used, I count visits with GoatCounter. It uses no cookies and stores no personal data or full IP addresses, so you can't be identified."
     NL["privacy"]["sections"][4][1][1] = "Om te zien hoe de website gebruikt wordt, tel ik bezoeken met GoatCounter. Dat gebruikt geen cookies en bewaart geen persoonsgegevens of volledige IP-adressen, dus je bent niet herkenbaar."
 
+
+# ---------------------------------------------------------------------------
+# Extra pagina's: Over mij, Werkwijze, FAQ en doelgroeppagina's (okt 2026)
+# ---------------------------------------------------------------------------
+
+EN["nav"]["about"] = "About"
+NL["nav"]["about"] = "Over mij"
+EN["nav"]["method"] = "How I work"
+NL["nav"]["method"] = "Werkwijze"
+EN["nav"]["faq"] = "FAQ"
+NL["nav"]["faq"] = "FAQ"
+EN["footer"]["more_h"] = "Training in Amsterdam"
+NL["footer"]["more_h"] = "Trainen in Amsterdam"
+EN["faq_all"] = "All questions"
+NL["faq_all"] = "Alle vragen"
+EN["how_more"] = "Read how I work"
+NL["how_more"] = "Lees hoe ik werk"
+EN["about_more"] = "More about me"
+NL["about_more"] = "Meer over mij"
+
+# Nieuwe FAQ-vragen
+EN["faq"]["items"].update({
+    "intro_what": ("What happens during the free intro?", "We meet for 30 minutes at Patrick's Gym. We talk about your goal, your training background and any injuries, and I explain how I would approach it. There's no obligation to continue."),
+    "level": ("Do I need to be fit to start?", "No. We start at your current level and build up from there. The plan is made for where you are now, not where you think you should be."),
+    "bring": ("What should I bring?", "Comfortable sports clothes, training shoes, a water bottle and a towel."),
+    "english": ("Do you coach in English?", "Yes. I coach in both Dutch and English."),
+    "how_often": ("How often should I train?", "Most clients train with me one to three times a week, sometimes combined with sessions on their own. During the intro we decide what fits your goal and your schedule."),
+    "injury": ("I have pain or an injury. Can I still train?", "Often, yes. I adjust the exercises to what's pain-free for you and build up step by step. I'm a personal trainer, not a doctor or physiotherapist, so with a medical condition or a recent injury, check with your GP or physiotherapist first. Tell me about it during the intro, so I can take it into account."),
+    "price": ("What does personal training cost?", "A single 60-minute session is €85. A package of 10 sessions is €850, including an assessment at the start, a personal training plan and re-tests along the way."),
+    "scan_what": ("What is the Performance Scan?", "A 90-minute assessment with more than 20 measurements of your body composition, posture, mobility, strength and conditioning. You get a personal report and training plan. It's a fitness assessment, not a medical examination."),
+    "own": ("Do I get a plan for training on my own?", "Yes. You get your training plan on your phone, with sets, reps and weights, so you know exactly what to do when you train without me."),
+})
+NL["faq"]["items"].update({
+    "intro_what": ("Wat gebeurt er tijdens de gratis kennismaking?", "We spreken 30 minuten af bij Patrick's Gym. We bespreken je doel, je trainingsachtergrond en eventuele blessures, en ik leg uit hoe ik het zou aanpakken. Je zit nergens aan vast."),
+    "level": ("Moet ik al fit zijn om te beginnen?", "Nee. We beginnen op jouw niveau en bouwen van daaruit op. Het plan is gemaakt voor waar je nu staat, niet voor waar je denkt dat je zou moeten staan."),
+    "bring": ("Wat neem ik mee?", "Comfortabele sportkleding, sportschoenen, een waterfles en een handdoek."),
+    "english": ("Train je ook in het Engels?", "Ja. Ik coach in het Nederlands en in het Engels."),
+    "how_often": ("Hoe vaak moet ik trainen?", "De meeste klanten trainen één tot drie keer per week met mij, soms aangevuld met trainingen op eigen houtje. Tijdens de kennismaking bepalen we wat past bij je doel en je agenda."),
+    "injury": ("Ik heb pijn of een blessure. Kan ik toch trainen?", "Vaak wel. Ik pas de oefeningen aan op wat voor jou pijnvrij is en bouw stap voor stap op. Ik ben personal trainer, geen arts of fysiotherapeut, dus overleg bij een medische aandoening of een recente blessure eerst met je huisarts of fysiotherapeut. Vertel het me tijdens de kennismaking, dan houd ik er rekening mee."),
+    "price": ("Wat kost personal training?", "Een losse sessie van 60 minuten kost €85. Een pakket van 10 sessies kost €850, inclusief een assessment bij de start, een persoonlijk trainingsplan en hertests onderweg."),
+    "scan_what": ("Wat is de Performance Scan?", "Een assessment van 90 minuten met meer dan 20 metingen van je lichaamssamenstelling, houding, mobiliteit, kracht en conditie. Je krijgt een persoonlijk rapport en trainingsplan. Het is een fitheidsmeting, geen medisch onderzoek."),
+    "own": ("Krijg ik een schema voor als ik zelf train?", "Ja. Je krijgt je trainingsschema op je telefoon, met sets, herhalingen en gewichten, zodat je precies weet wat je doet als je zonder mij traint."),
+})
+
+EN["faq_page"] = {
+    "eyebrow": "FAQ",
+    "h1": "Frequently asked questions",
+    "lead": "Everything you want to know before your first session. Can't find your question? Send me a message.",
+    "groups": [
+        ("Getting started", ["intro_what", "level", "bring", "english", "book"]),
+        ("The training", ["one", "coaching", "how_often", "own", "results", "injury"]),
+        ("Muay Thai", ["mt", "mt_expect", "beginners"]),
+        ("Prices and payment", ["price", "pay"]),
+        ("Location and Performance Scan", ["where", "scan_what"]),
+    ],
+}
+NL["faq_page"] = {
+    "eyebrow": "FAQ",
+    "h1": "Veelgestelde vragen",
+    "lead": "Alles wat je wilt weten voor je eerste training. Staat je vraag er niet bij? Stuur me een bericht.",
+    "groups": [
+        ("Beginnen", ["intro_what", "level", "bring", "english", "book"]),
+        ("De training", ["one", "coaching", "how_often", "own", "results", "injury"]),
+        ("Muay Thai", ["mt", "mt_expect", "beginners"]),
+        ("Prijzen en betalen", ["price", "pay"]),
+        ("Locatie en Performance Scan", ["where", "scan_what"]),
+    ],
+}
+
+EN["about_page"] = {
+    "eyebrow": "About me",
+    "h1": "Casper Boekee",
+    "sub": "Personal trainer · Amsterdam",
+    "lead": "I help people get stronger, fitter and move with less pain, through 1-on-1 coaching, measurable progress and a clear training plan.",
+    "hero_alt": "Casper Boekee with Thai pads in the ring at Patrick's Gym",
+    "story_h": "Who I am",
+    "story": [
+        "I'm Casper, personal trainer at Patrick's Gym in Amsterdam. I train people 1-on-1 in Muay Thai and functional strength: from people who have never set foot in a gym to fighters preparing for the ring.",
+        "For over two years I've been coaching personal training, strength & conditioning and Muay Thai at Patrick's Gym. I'm a certified fitness instructor and personal trainer (Fitvak A&B), I'm completing the NASM Certified Personal Trainer programme, and I keep developing through courses at the Dutch HDA.",
+        "Muay Thai teaches you a skill, discipline and conditioning at the same time. Strength training makes your body resilient. Together they make you fitter, stronger and more confident, in the gym and outside it.",
+    ],
+    "creds_h": "Background",
+    "creds": [
+        "Certified fitness instructor and personal trainer (Fitvak A&B)",
+        "NASM Certified Personal Trainer, in progress",
+        "2+ years coaching at Patrick's Gym, Amsterdam",
+        "Muay Thai, strength & conditioning and functional training",
+        "Coaching in Dutch and English",
+    ],
+    "phil_eyebrow": "How I coach",
+    "phil_h": "What you can count on",
+    "philosophy": [
+        ("A plan, not random workouts", "Every client gets a plan built around their goal, body and schedule. You always know what you're doing and why."),
+        ("Progress you can measure", "We test at the start and re-test along the way. Strength, mobility and conditioning: you see your progress in numbers, not just in the mirror."),
+        ("Coaching, not commanding", "I explain the reason behind every exercise and pay attention to how your body responds. You don't just follow along, you learn to train."),
+        ("Discipline over motivation", "Motivation comes and goes. We build structure and habits that keep you going on the days you don't feel like it."),
+        ("Technique first", "Good technique before heavy weights. That's how you get stronger without getting injured."),
+    ],
+}
+NL["about_page"] = {
+    "eyebrow": "Over mij",
+    "h1": "Casper Boekee",
+    "sub": "Personal trainer · Amsterdam",
+    "lead": "Ik help mensen sterker en fitter te worden en met minder pijn te bewegen, met 1-op-1 coaching, meetbare progressie en een duidelijk trainingsplan.",
+    "hero_alt": "Casper Boekee met Thai pads in de ring bij Patrick's Gym",
+    "story_h": "Wie ik ben",
+    "story": [
+        "Ik ben Casper, personal trainer bij Patrick's Gym in Amsterdam. Ik train mensen 1-op-1 in Muay Thai en functionele kracht: van mensen die nog nooit in een sportschool zijn geweest tot vechters die zich voorbereiden op de ring.",
+        "Al ruim twee jaar geef ik bij Patrick's Gym personal training, strength & conditioning en Muay Thai. Ik ben gecertificeerd fitnessinstructeur en personal trainer (Fitvak A&B), rond de NASM Certified Personal Trainer-opleiding af en blijf me ontwikkelen met opleidingen bij de Dutch HDA.",
+        "Muay Thai leert je een vaardigheid, discipline en conditie tegelijk. Krachttraining maakt je lichaam sterk en belastbaar. Samen maken ze je fitter, sterker en zelfverzekerder, in de gym en daarbuiten.",
+    ],
+    "creds_h": "Achtergrond",
+    "creds": [
+        "Gecertificeerd fitnessinstructeur en personal trainer (Fitvak A&B)",
+        "NASM Certified Personal Trainer, in opleiding",
+        "Ruim 2 jaar trainer bij Patrick's Gym, Amsterdam",
+        "Muay Thai, strength & conditioning en functionele training",
+        "Coaching in het Nederlands en Engels",
+    ],
+    "phil_eyebrow": "Hoe ik coach",
+    "phil_h": "Waar je op kunt rekenen",
+    "philosophy": [
+        ("Een plan, geen losse workouts", "Iedere klant krijgt een plan dat past bij zijn doel, lichaam en agenda. Je weet altijd wat je doet en waarom."),
+        ("Progressie die je kunt meten", "We testen bij de start en tussendoor opnieuw. Kracht, mobiliteit en conditie: je ziet je vooruitgang in cijfers, niet alleen in de spiegel."),
+        ("Begeleiden, niet commanderen", "Ik leg uit waarom we een oefening doen en let op hoe je lichaam reageert. Je volgt niet alleen, je leert trainen."),
+        ("Discipline boven motivatie", "Motivatie komt en gaat. We bouwen structuur en gewoontes op die je ook verder helpen op dagen dat je er geen zin in hebt."),
+        ("Techniek eerst", "Eerst goede techniek, daarna zwaarder. Zo word je sterker zonder geblesseerd te raken."),
+    ],
+}
+
+EN["method"] = {
+    "eyebrow": "How I work",
+    "h1": "How I work",
+    "sub": "From intro to measurable progress",
+    "lead": "You know what to expect before you start: how the first weeks go, what a session looks like and how we keep track of your progress.",
+    "hero_alt": "Casper Boekee coaching a client on the pads at Patrick's Gym",
+    "route_eyebrow": "Your trajectory",
+    "route_h": "Step by step",
+    "route": [
+        ("Free intro", "30 minutes at Patrick's Gym. We talk about your goal, your background and any injuries, and see if we're a match."),
+        ("Intake and assessment", "You fill in a short intake form. In the first session I test your starting point: movement, mobility, strength and conditioning."),
+        ("Your training plan", "Based on your goal and the assessment you get a personal training plan, on your phone, with sets, reps and weights."),
+        ("Train and track", "We train 1-on-1. I record what you lift and how it felt, so every session builds on the last one."),
+        ("Re-test and adjust", "Every 6 to 8 weeks we re-test. You see what has improved and we adjust the plan for the next block."),
+    ],
+    "pt_eyebrow": "Personal training",
+    "pt_h": "A personal training session",
+    "pt_lead": "60 minutes, fully 1-on-1. Every session follows the same structure, adjusted to you.",
+    "pt_blocks": [
+        ("Check-in", "5 min", "How did you sleep, how is your energy and do you feel any pain? If needed, I adjust the session on the spot."),
+        ("Warm-up and activation", "10 min", "Mobility and activation exercises that fit your body and your assessment."),
+        ("Strength", "30 min", "The main part of the session. I coach your technique on every set and keep track of your weights."),
+        ("Core and conditioning", "10 min", "Core stability, carries and conditioning, so you get stronger as a whole."),
+        ("Wrap-up", "5 min", "What went well, what's next, and what to do if you train on your own."),
+    ],
+    "mt_eyebrow": "Muay Thai",
+    "mt_h": "A Muay Thai session",
+    "mt_lead": "60 minutes, fully 1-on-1. Technique first, then we put it to work on the pads.",
+    "mt_blocks": [
+        ("Warm-up", "10 min", "Skipping or shadowboxing and mobility for hips and shoulders."),
+        ("Technique", "15 min", "One theme per session: stance and footwork, combinations, kicks, knees, elbows or clinch."),
+        ("Padwork", "20 min", "Rounds of 2 to 3 minutes on the pads with direct feedback, so technique turns into timing and power."),
+        ("Conditioning", "10 min", "Bag work or fight-specific conditioning, adjusted to your level."),
+        ("Cool-down", "5 min", "Calm down, mobility, and a short review of the session."),
+    ],
+    "note": "Times are a guide. Every session is adjusted to your level, your goal and how you feel that day.",
+}
+NL["method"] = {
+    "eyebrow": "Werkwijze",
+    "h1": "Zo werk ik",
+    "sub": "Van kennismaking tot meetbare progressie",
+    "lead": "Je weet wat je kunt verwachten voordat je begint: hoe de eerste weken verlopen, hoe een training eruitziet en hoe we je progressie bijhouden.",
+    "hero_alt": "Casper Boekee coacht een klant op de pads bij Patrick's Gym",
+    "route_eyebrow": "Je traject",
+    "route_h": "Stap voor stap",
+    "route": [
+        ("Gratis kennismaking", "30 minuten bij Patrick's Gym. We bespreken je doel, je achtergrond en eventuele blessures, en kijken of het klikt."),
+        ("Intake en assessment", "Je vult een kort intakeformulier in. In de eerste sessie test ik je startpunt: beweging, mobiliteit, kracht en conditie."),
+        ("Je trainingsplan", "Op basis van je doel en het assessment krijg je een persoonlijk trainingsplan, op je telefoon, met sets, herhalingen en gewichten."),
+        ("Trainen en bijhouden", "We trainen 1-op-1. Ik houd bij wat je tilt en hoe het voelde, zodat elke training voortbouwt op de vorige."),
+        ("Hertesten en bijsturen", "Elke 6 tot 8 weken testen we opnieuw. Je ziet wat er beter is geworden en we passen het plan aan voor het volgende blok."),
+    ],
+    "pt_eyebrow": "Personal training",
+    "pt_h": "Een personal training",
+    "pt_lead": "60 minuten, volledig 1-op-1. Elke training heeft dezelfde opbouw, afgestemd op jou.",
+    "pt_blocks": [
+        ("Check-in", "5 min", "Hoe heb je geslapen, hoeveel energie heb je en heb je ergens pijn? Als het nodig is, pas ik de training direct aan."),
+        ("Warming-up en activatie", "10 min", "Mobiliteits- en activatieoefeningen die passen bij jouw lichaam en je assessment."),
+        ("Kracht", "30 min", "Het hoofdonderdeel van de training. Ik coach je techniek bij elke set en houd je gewichten bij."),
+        ("Core en conditie", "10 min", "Core-stabiliteit, carries en conditie, zodat je als geheel sterker wordt."),
+        ("Afronden", "5 min", "Wat ging goed, wat is de volgende stap en wat doe je als je zelf traint."),
+    ],
+    "mt_eyebrow": "Muay Thai",
+    "mt_h": "Een Muay Thai-training",
+    "mt_lead": "60 minuten, volledig 1-op-1. Eerst techniek, daarna zetten we het om op de pads.",
+    "mt_blocks": [
+        ("Warming-up", "10 min", "Touwtjespringen of shadowboxen en mobiliteit voor heupen en schouders."),
+        ("Techniek", "15 min", "Eén thema per training: stand en voetenwerk, combinaties, trappen, knieën, ellebogen of clinch."),
+        ("Padwork", "20 min", "Rondes van 2 tot 3 minuten op de pads met directe feedback, zodat techniek timing en kracht wordt."),
+        ("Conditie", "10 min", "Zakwerk of fight-specifieke conditie, afgestemd op jouw niveau."),
+        ("Cooling-down", "5 min", "Rustig afbouwen, mobiliteit en een korte terugblik op de training."),
+    ],
+    "note": "De tijden zijn een richtlijn. Elke training wordt afgestemd op je niveau, je doel en hoe je je die dag voelt.",
+}
+
+# Doelgroeppagina's (voor Google): elke pagina zijn eigen zoekterm.
+EN["lp"] = {
+    "muay-thai-beginners": {
+        "eyebrow": "Muay Thai · Amsterdam",
+        "h1": "Muay Thai for beginners",
+        "sub": "1-on-1 in Amsterdam",
+        "lead": "Never done Muay Thai before? In 1-on-1 sessions you learn the basics step by step, at your own pace, without having to keep up with a group.",
+        "hero_alt": "Kick drill on the Thai pads in the ring",
+        "img": "hero-mt",
+        "why_eyebrow": "Why 1-on-1",
+        "why_h": "The best way to start",
+        "why": [
+            ("Your own pace", "No group to keep up with. We take the time you need for every technique."),
+            ("Good technique from day one", "Direct feedback on every punch and kick, so you don't learn bad habits."),
+            ("No experience needed", "We start with stance and footwork and build up from there."),
+            ("Get fit along the way", "Muay Thai trains your whole body: conditioning, strength and coordination."),
+        ],
+        "who_eyebrow": "Who it's for",
+        "who_h": "This is for you if",
+        "who": [
+            "you've always wanted to try Muay Thai but find a group class intimidating",
+            "you want a sport that keeps challenging you, not just a gym routine",
+            "you want to get fitter and more confident",
+            "you'd rather learn it properly from the start",
+        ],
+        "steps_h": "Your first sessions",
+        "steps": [
+            ("Free intro", "We meet at Patrick's Gym, talk about your goal and you get a feel for the training."),
+            ("The basics", "Stance, footwork, jab, cross and teep. Slowly, with attention to detail."),
+            ("On the pads", "Once the basics are in place, we put them together in combinations on the pads."),
+        ],
+        "faq": ["beginners", "level", "mt_expect", "bring", "price"],
+        "meta_title": "Muay Thai for Beginners Amsterdam | 1-on-1 | Casper Boekee",
+        "meta_desc": "Learn Muay Thai as a complete beginner in 1-on-1 sessions in Amsterdam. Step by step, at your own pace, at Patrick's Gym. Book a free 30-minute intro.",
+    },
+    "personal-training-amsterdam-west": {
+        "eyebrow": "Personal trainer · Amsterdam West",
+        "h1": "Personal trainer in Amsterdam West",
+        "sub": "At Patrick's Gym",
+        "lead": "1-on-1 personal training at Patrick's Gym on the Marius Bauerstraat. Easy to reach from Oud-West, De Baarsjes, Bos en Lommer and Nieuw-West.",
+        "hero_alt": "Casper Boekee coaching a client on the pads at Patrick's Gym",
+        "img": "hero-pt",
+        "why_eyebrow": "What you get",
+        "why_h": "Personal training with a plan",
+        "why": [
+            ("1-on-1 coaching", "Every session is fully personal, at a time that suits you."),
+            ("A clear plan", "A training plan built around your goal, schedule and body."),
+            ("Measurable progress", "We test at the start and re-test along the way."),
+            ("Close to home", "Patrick's Gym, Marius Bauerstraat 28, in Amsterdam West."),
+        ],
+        "who_eyebrow": "Goals",
+        "who_h": "What we can work on",
+        "who": [
+            "getting stronger and building muscle",
+            "losing weight with a plan you can stick to",
+            "moving with less pain and better posture",
+            "learning Muay Thai or improving your technique",
+            "better conditioning for running or other sports",
+        ],
+        "steps_h": "How to start",
+        "steps": [
+            ("Free intro", "30 minutes at Patrick's Gym to talk about your goal."),
+            ("Assessment", "I measure your starting point: strength, mobility and conditioning."),
+            ("Training", "We train 1-on-1 and track your progress."),
+        ],
+        "faq": ["where", "intro_what", "how_often", "price", "english"],
+        "meta_title": "Personal Trainer Amsterdam West | Casper Boekee",
+        "meta_desc": "Personal trainer in Amsterdam West: 1-on-1 training at Patrick's Gym, Marius Bauerstraat. Strength, weight loss, Muay Thai and moving without pain. Free 30-minute intro.",
+    },
+    "pain-free-strength": {
+        "eyebrow": "Personal training · Amsterdam",
+        "h1": "Stronger with less pain",
+        "sub": "Strength training at your level",
+        "lead": "Back, knees or shoulders not cooperating? With the right exercises and a careful build-up, you can often get stronger with less pain.",
+        "hero_alt": "Casper Boekee holding pads during a 1-on-1 session",
+        "img": "pt-mid",
+        "why_eyebrow": "The approach",
+        "why_h": "Careful and step by step",
+        "why": [
+            ("Screening first", "I test how you move and where it gets stuck, before we start loading."),
+            ("Pain-free range", "We train within what feels good and expand that step by step."),
+            ("Build up gradually", "Weight goes up when your technique and your body are ready, not sooner."),
+            ("Measure and adjust", "We keep track of how you feel and adjust the plan when needed."),
+        ],
+        "who_eyebrow": "Who it's for",
+        "who_h": "This is for you if",
+        "who": [
+            "you have back, knee or shoulder complaints from sitting, sport or an old injury",
+            "you've finished physiotherapy and want to keep building",
+            "you want to get stronger but are afraid of making things worse",
+            "you want to stay strong and mobile as you get older",
+        ],
+        "steps_h": "How it works",
+        "steps": [
+            ("Free intro", "We talk about your complaints, your history and your goal."),
+            ("Screening", "Movement and mobility tests show where we need to start."),
+            ("Training plan", "A plan with exercises that fit your body, built up step by step."),
+        ],
+        "note": "I'm a personal trainer, not a doctor or physiotherapist. I don't diagnose or treat injuries. With a recent injury or a medical condition, check with your GP or physiotherapist first.",
+        "faq": ["injury", "level", "results", "how_often", "price"],
+        "meta_title": "Strength Training with Less Pain Amsterdam | Casper Boekee",
+        "meta_desc": "Get stronger with less back, knee or shoulder pain. 1-on-1 strength training in Amsterdam with screening and a careful build-up. Free 30-minute intro at Patrick's Gym.",
+    },
+}
+NL["lp"] = {
+    "muay-thai-beginners": {
+        "eyebrow": "Muay Thai · Amsterdam",
+        "h1": "Muay Thai voor beginners",
+        "sub": "1-op-1 in Amsterdam",
+        "lead": "Nog nooit Muay Thai gedaan? In 1-op-1 trainingen leer je de basis stap voor stap, in je eigen tempo, zonder dat je een groep hoeft bij te houden.",
+        "hero_alt": "Trap-oefening op de Thai pads in de ring",
+        "img": "hero-mt",
+        "why_eyebrow": "Waarom 1-op-1",
+        "why_h": "De beste manier om te beginnen",
+        "why": [
+            ("Je eigen tempo", "Geen groep om bij te houden. We nemen de tijd die je nodig hebt voor elke techniek."),
+            ("Vanaf dag één goede techniek", "Directe feedback op elke stoot en trap, zodat je geen verkeerde gewoontes aanleert."),
+            ("Geen ervaring nodig", "We beginnen met stand en voetenwerk en bouwen van daaruit op."),
+            ("Fitter onderweg", "Muay Thai traint je hele lichaam: conditie, kracht en coördinatie."),
+        ],
+        "who_eyebrow": "Voor wie",
+        "who_h": "Dit is voor jou als",
+        "who": [
+            "je altijd al Muay Thai wilde proberen, maar een groepsles spannend vindt",
+            "je een sport zoekt die uitdagend blijft, in plaats van alleen een gymroutine",
+            "je fitter en zelfverzekerder wilt worden",
+            "je het liever meteen goed leert",
+        ],
+        "steps_h": "Je eerste trainingen",
+        "steps": [
+            ("Gratis kennismaking", "We spreken af bij Patrick's Gym, bespreken je doel en je krijgt een eerste indruk van de training."),
+            ("De basis", "Stand, voetenwerk, jab, cross en teep. Rustig, met oog voor detail."),
+            ("Op de pads", "Zodra de basis staat, zetten we het samen in combinaties op de pads."),
+        ],
+        "faq": ["beginners", "level", "mt_expect", "bring", "price"],
+        "meta_title": "Muay Thai voor beginners Amsterdam | 1-op-1 | Casper Boekee",
+        "meta_desc": "Leer Muay Thai als complete beginner in 1-op-1 trainingen in Amsterdam. Stap voor stap, in je eigen tempo, bij Patrick's Gym. Plan een gratis kennismaking van 30 minuten.",
+    },
+    "personal-training-amsterdam-west": {
+        "eyebrow": "Personal trainer · Amsterdam West",
+        "h1": "Personal trainer in Amsterdam West",
+        "sub": "Bij Patrick's Gym",
+        "lead": "1-op-1 personal training bij Patrick's Gym aan de Marius Bauerstraat. Goed bereikbaar vanuit Oud-West, De Baarsjes, Bos en Lommer en Nieuw-West.",
+        "hero_alt": "Casper Boekee coacht een klant op de pads bij Patrick's Gym",
+        "img": "hero-pt",
+        "why_eyebrow": "Wat je krijgt",
+        "why_h": "Personal training met een plan",
+        "why": [
+            ("1-op-1 coaching", "Elke training is volledig persoonlijk, op een tijd die jou uitkomt."),
+            ("Een duidelijk plan", "Een trainingsplan dat past bij je doel, je agenda en je lichaam."),
+            ("Meetbare progressie", "We testen bij de start en tussendoor opnieuw."),
+            ("Dichtbij", "Patrick's Gym, Marius Bauerstraat 28, in Amsterdam West."),
+        ],
+        "who_eyebrow": "Doelen",
+        "who_h": "Waar we aan kunnen werken",
+        "who": [
+            "sterker worden en spiermassa opbouwen",
+            "afvallen met een plan dat je volhoudt",
+            "met minder pijn bewegen en een betere houding",
+            "Muay Thai leren of je techniek verbeteren",
+            "een betere conditie voor hardlopen of een andere sport",
+        ],
+        "steps_h": "Zo begin je",
+        "steps": [
+            ("Gratis kennismaking", "30 minuten bij Patrick's Gym om je doel te bespreken."),
+            ("Assessment", "Ik meet je startpunt: kracht, mobiliteit en conditie."),
+            ("Trainen", "We trainen 1-op-1 en houden je progressie bij."),
+        ],
+        "faq": ["where", "intro_what", "how_often", "price", "english"],
+        "meta_title": "Personal Trainer Amsterdam West | Casper Boekee",
+        "meta_desc": "Personal trainer in Amsterdam West: 1-op-1 training bij Patrick's Gym, Marius Bauerstraat. Kracht, afvallen, Muay Thai en pijnvrij bewegen. Gratis kennismaking van 30 minuten.",
+    },
+    "pain-free-strength": {
+        "eyebrow": "Personal training · Amsterdam",
+        "h1": "Sterker met minder pijn",
+        "sub": "Krachttraining op jouw niveau",
+        "lead": "Werken je rug, knieën of schouders niet mee? Met de juiste oefeningen en een zorgvuldige opbouw kun je vaak sterker worden met minder pijn.",
+        "hero_alt": "Casper Boekee houdt pads vast tijdens een 1-op-1 sessie",
+        "img": "pt-mid",
+        "why_eyebrow": "De aanpak",
+        "why_h": "Zorgvuldig en stap voor stap",
+        "why": [
+            ("Eerst een screening", "Ik test hoe je beweegt en waar het vastloopt, voordat we gaan belasten."),
+            ("Pijnvrij bereik", "We trainen binnen wat goed voelt en breiden dat stap voor stap uit."),
+            ("Rustig opbouwen", "Het gewicht gaat omhoog als je techniek en je lichaam er klaar voor zijn, niet eerder."),
+            ("Meten en bijsturen", "We houden bij hoe je je voelt en passen het plan aan als dat nodig is."),
+        ],
+        "who_eyebrow": "Voor wie",
+        "who_h": "Dit is voor jou als",
+        "who": [
+            "je last hebt van je rug, knieën of schouders door zitten, sport of een oude blessure",
+            "je klaar bent bij de fysiotherapeut en verder wilt bouwen",
+            "je sterker wilt worden, maar bang bent om het erger te maken",
+            "je sterk en soepel wilt blijven nu je ouder wordt",
+        ],
+        "steps_h": "Zo werkt het",
+        "steps": [
+            ("Gratis kennismaking", "We bespreken je klachten, je voorgeschiedenis en je doel."),
+            ("Screening", "Bewegings- en mobiliteitstests laten zien waar we moeten beginnen."),
+            ("Trainingsplan", "Een plan met oefeningen die bij je lichaam passen, stap voor stap opgebouwd."),
+        ],
+        "note": "Ik ben personal trainer, geen arts of fysiotherapeut. Ik stel geen diagnoses en behandel geen blessures. Overleg bij een recente blessure of een medische aandoening eerst met je huisarts of fysiotherapeut.",
+        "faq": ["injury", "level", "results", "how_often", "price"],
+        "meta_title": "Krachttraining met minder pijn Amsterdam | Casper Boekee",
+        "meta_desc": "Word sterker met minder rug-, knie- of schouderklachten. 1-op-1 krachttraining in Amsterdam met screening en een zorgvuldige opbouw. Gratis kennismaking bij Patrick's Gym.",
+    },
+}
+
+EN["meta"].update({
+    "about": {"title": "About Casper Boekee | Personal Trainer Amsterdam", "desc": "Casper Boekee is a certified personal trainer at Patrick's Gym in Amsterdam, coaching Muay Thai, strength & conditioning and functional training 1-on-1."},
+    "method": {"title": "How I Work | Personal Training & Muay Thai | Casper Boekee", "desc": "What to expect: from free intro and assessment to your training plan, a typical personal training or Muay Thai session, and regular re-tests."},
+    "faq": {"title": "FAQ | Personal Training & Muay Thai Amsterdam | Casper Boekee", "desc": "Answers to common questions about personal training and Muay Thai with Casper Boekee in Amsterdam: getting started, prices, injuries, location and more."},
+})
+NL["meta"].update({
+    "about": {"title": "Over Casper Boekee | Personal Trainer Amsterdam", "desc": "Casper Boekee is gecertificeerd personal trainer bij Patrick's Gym in Amsterdam en geeft 1-op-1 Muay Thai, strength & conditioning en functionele training."},
+    "method": {"title": "Werkwijze | Personal Training & Muay Thai | Casper Boekee", "desc": "Wat je kunt verwachten: van gratis kennismaking en assessment tot je trainingsplan, een personal training of Muay Thai-training en vaste hertests."},
+    "faq": {"title": "FAQ | Personal Training & Muay Thai Amsterdam | Casper Boekee", "desc": "Antwoorden op veelgestelde vragen over personal training en Muay Thai bij Casper Boekee in Amsterdam: beginnen, prijzen, blessures, locatie en meer."},
+})
+for _L in (EN, NL):
+    for _k, _v in _L["lp"].items():
+        _L["meta"][_k] = {"title": _v["meta_title"], "desc": _v["meta_desc"]}
+
 LANGS = {"en": EN, "nl": NL}

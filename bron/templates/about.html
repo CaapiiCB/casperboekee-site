@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% set d = t.about_page %}
+{% block main %}
+{{ m.page_hero(d.eyebrow, d.h1, d.sub, d.lead, 'hero-wide', d.hero_alt) }}
+
+<section class="section about">
+  <div class="wrap about__grid">
+    <div class="about__media">{{ m.img('about', t.about.alt, '(min-width: 900px) 40vw, 100vw') }}</div>
+    <div class="about__body">
+      <h2 class="h-xl">{{ d.story_h }}</h2>
+      {%- for p in d.story %}
+      <p>{{ p }}</p>
+      {%- endfor %}
+      <h3 class="h-md about__sub">{{ d.creds_h }}</h3>
+      <ul class="checks">
+        {%- for c in d.creds %}
+        <li>{{ c }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(d.phil_eyebrow, d.phil_h) }}
+    {{ m.features(d.philosophy) }}
+    <p class="more-link"><a class="link" href="{{ href('method') }}">{{ t.how_more }}{{ m.icon('arrow') }}</a></p>
+  </div>
+</section>
+
+{{ m.cta_band() }}
+{% endblock %}

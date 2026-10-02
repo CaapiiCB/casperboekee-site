@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% set d = t.lp[page] %}
+{% block main %}
+{{ m.page_hero(d.eyebrow, d.h1, d.sub, d.lead, d.img, d.hero_alt) }}
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(d.why_eyebrow, d.why_h) }}
+    {{ m.features(d.why) }}
+  </div>
+</section>
+
+<section class="section split">
+  <div class="wrap split__grid">
+    <div class="split__media">{{ m.img('about', t.about.alt, '(min-width: 900px) 50vw, 100vw') }}</div>
+    <div class="split__body">
+      <p class="eyebrow">{{ d.who_eyebrow }}</p>
+      <h2 class="h-xl">{{ d.who_h }}</h2>
+      <ul class="checks">
+        {%- for w in d.who %}
+        <li>{{ w }}</li>
+        {%- endfor %}
+      </ul>
+      {%- if d.get("note") %}
+      <p class="muted">{{ d.note }}</p>
+      {%- endif %}
+      <p class="more-link"><a class="link" href="{{ href('about') }}">{{ t.about_more }}{{ m.icon('arrow') }}</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section how">
+  <div class="wrap">
+    {{ m.head(t.how.eyebrow, d.steps_h) }}
+    {{ m.steps(d.steps) }}
+  </div>
+</section>
+
+{{ m.prices() }}
+{{ m.faq(d.faq) }}
+{{ m.cta_band() }}
+{% endblock %}

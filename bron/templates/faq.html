@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% block main %}
+<div class="page-top"></div>
+<section class="section faq faq--page">
+  <div class="wrap wrap--narrow">
+    {{ m.head(t.faq_page.eyebrow, t.faq_page.h1, 'h1') }}
+    <p class="lead">{{ t.faq_page.lead }}</p>
+    {%- for title, keys in t.faq_page.groups %}
+    <h2 class="h-md faq__group">{{ title }}</h2>
+    <div class="faq__list">
+      {%- for k in keys %}
+      <details class="faq__item">
+        <summary><span>{{ t.faq['items'][k][0] }}</span>{{ m.icon('plus') }}</summary>
+        <p>{{ t.faq['items'][k][1] }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+{{ m.cta_band() }}
+{% endblock %}

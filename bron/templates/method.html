@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "macros.html" as m with context %}
+{% set d = t.method %}
+{% macro blocks(items) -%}
+<div class="tests">
+  {%- for title, mins, text in items %}
+  <article class="test">
+    <p class="test__n" aria-hidden="true">{{ '%02d' % loop.index }}</p>
+    <h3 class="h-md">{{ title }}</h3>
+    <p class="test__time">{{ mins }}</p>
+    <p class="test__intro">{{ text }}</p>
+  </article>
+  {%- endfor %}
+</div>
+{%- endmacro %}
+{% block main %}
+{{ m.page_hero(d.eyebrow, d.h1, d.sub, d.lead, 'hero-pt', d.hero_alt) }}
+
+<section class="section how">
+  <div class="wrap">
+    {{ m.head(d.route_eyebrow, d.route_h) }}
+    {{ m.steps(d.route) }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(d.pt_eyebrow, d.pt_h) }}
+    <p class="lead sec-lead">{{ d.pt_lead }}</p>
+    {{ blocks(d.pt_blocks) }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.head(d.mt_eyebrow, d.mt_h) }}
+    <p class="lead sec-lead">{{ d.mt_lead }}</p>
+    {{ blocks(d.mt_blocks) }}
+    <p class="disclaimer">{{ d.note }}</p>
+  </div>
+</section>
+
+{{ m.prices() }}
+{{ m.cta_band() }}
+{% endblock %}

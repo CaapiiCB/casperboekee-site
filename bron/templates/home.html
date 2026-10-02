@@ -79,6 +79,7 @@
   <div class="wrap">
     {{ m.head(t.how.eyebrow, t.how.h) }}
     {{ m.steps(t.how.steps) }}
+    <p class="more-link"><a class="link" href="{{ href('method') }}">{{ t.how_more }}{{ m.icon('arrow') }}</a></p>
   </div>
 </section>
 
@@ -93,6 +94,7 @@
       {%- for p in t.about.p %}
       <p>{{ p }}</p>
       {%- endfor %}
+      <p class="more-link"><a class="link" href="{{ href('about') }}">{{ t.about_more }}{{ m.icon('arrow') }}</a></p>
       <ul class="chips">
         {%- for c in t.about.chips %}
         <li>{{ c }}</li>
