@@ -768,9 +768,10 @@ EN["about_page"] = {
     "hero_alt": "Casper Boekee with Thai pads in the ring at Patrick's Gym",
     "story_h": "Who I am",
     "story": [
-        "I'm Casper, personal trainer at Patrick's Gym in Amsterdam. I train people 1-on-1 in Muay Thai and functional strength: from people who have never set foot in a gym to fighters preparing for the ring.",
-        "For over two years I've been coaching personal training, strength & conditioning and Muay Thai at Patrick's Gym. I'm a certified fitness instructor and personal trainer (Fitvak A&B), I'm completing the NASM Certified Personal Trainer programme, and I keep developing through courses at the Dutch HDA.",
-        "Muay Thai teaches you a skill, discipline and conditioning at the same time. Strength training makes your body resilient. Together they make you fitter, stronger and more confident, in the gym and outside it.",
+        "My love for Muay Thai started in Thailand. There I saw and felt how the sport is practised in its home country: traditional, technical, and with a lot of respect and discipline. That's where I really got hooked on authentic Muay Thai, and that feeling has never gone away.",
+        "I turned that passion into my work. For over two years I've been coaching personal training, strength & conditioning and Muay Thai at Patrick's Gym in Amsterdam, from people who have never set foot in a gym to fighters preparing for the ring.",
+        "I'm a certified fitness instructor and personal trainer (Fitvak A&B), I'm completing the NASM Certified Personal Trainer programme, and I keep developing through courses at the Dutch HDA.",
+        "In my sessions I pass on that authentic Muay Thai, combined with strength training that makes your body strong and resilient. That's how you become fitter, stronger and more confident, in the gym and outside it.",
     ],
     "creds_h": "Background",
     "creds": [
@@ -798,9 +799,10 @@ NL["about_page"] = {
     "hero_alt": "Casper Boekee met Thai pads in de ring bij Patrick's Gym",
     "story_h": "Wie ik ben",
     "story": [
-        "Ik ben Casper, personal trainer bij Patrick's Gym in Amsterdam. Ik train mensen 1-op-1 in Muay Thai en functionele kracht: van mensen die nog nooit in een sportschool zijn geweest tot vechters die zich voorbereiden op de ring.",
-        "Al ruim twee jaar geef ik bij Patrick's Gym personal training, strength & conditioning en Muay Thai. Ik ben gecertificeerd fitnessinstructeur en personal trainer (Fitvak A&B), rond de NASM Certified Personal Trainer-opleiding af en blijf me ontwikkelen met opleidingen bij de Dutch HDA.",
-        "Muay Thai leert je een vaardigheid, discipline en conditie tegelijk. Krachttraining maakt je lichaam sterk en belastbaar. Samen maken ze je fitter, sterker en zelfverzekerder, in de gym en daarbuiten.",
+        "Mijn liefde voor Muay Thai begon in Thailand. Daar zag en voelde ik hoe de sport in zijn thuisland wordt beoefend: traditioneel, technisch en met veel respect en discipline. Daar kreeg ik de smaak van authentiek Muay Thai echt te pakken, en dat gevoel is nooit meer weggegaan.",
+        "Van die passie heb ik mijn werk gemaakt. Al ruim twee jaar geef ik bij Patrick's Gym in Amsterdam personal training, strength & conditioning en Muay Thai, aan mensen die nog nooit in een sportschool zijn geweest tot vechters die zich voorbereiden op de ring.",
+        "Ik ben gecertificeerd fitnessinstructeur en personal trainer (Fitvak A&B), rond de NASM Certified Personal Trainer-opleiding af en blijf me ontwikkelen met opleidingen bij de Dutch HDA.",
+        "In mijn trainingen geef ik dat authentieke Muay Thai door, gecombineerd met krachttraining die je lichaam sterk en belastbaar maakt. Zo word je fitter, sterker en zelfverzekerder, in de gym en daarbuiten.",
     ],
     "creds_h": "Achtergrond",
     "creds": [
