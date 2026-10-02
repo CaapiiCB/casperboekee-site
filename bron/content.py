@@ -37,7 +37,7 @@ SITE = {
     "goatcounter": "casperboekee",
     # Reviews en clips: leeg = blok wordt niet getoond.
     "reviews": [],
-    "clips": [{"src": "assets/video/padwork.mp4", "poster": "assets/img/padwork-poster.jpg", "w": 720, "h": 1280}],
+    "clips": [{"src": "assets/video/padwork.mp4", "poster": "assets/img/casper-boekee-personal-trainer-padwork-poster.jpg", "w": 720, "h": 1280}],
 }
 
 EN = {

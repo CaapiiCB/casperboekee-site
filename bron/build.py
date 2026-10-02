@@ -43,6 +43,8 @@ REDIRECTS = {
 env = Environment(loader=FileSystemLoader(HERE / "templates"), undefined=StrictUndefined, autoescape=True,
                   trim_blocks=False, lstrip_blocks=False)
 IMAGES = json.loads((HERE / "static/img/meta.json").read_text())
+# Bestandsnamen met naam en vak erin, zodat Google Afbeeldingen ze aan "Casper Boekee" koppelt.
+IMG_PREFIX = "casper-boekee-personal-trainer-"
 
 
 def parts(lang, page):
@@ -80,7 +82,7 @@ def jsonld(lang, page, t):
         "@id": SITE["base_url"] + "#business",
         "name": SITE["name"],
         "url": abs_url(lang, "home"),
-        "image": SITE["base_url"] + "assets/img/og.jpg",
+        "image": SITE["base_url"] + "assets/img/" + IMG_PREFIX + "og.jpg",
         "telephone": SITE["phone_tel"],
         "email": SITE["email"],
         "priceRange": "€€",
@@ -91,7 +93,11 @@ def jsonld(lang, page, t):
             "addressCountry": "NL",
         },
         "areaServed": "Amsterdam",
-        "founder": {"@type": "Person", "name": SITE["person"], "jobTitle": "Personal Trainer"},
+        "founder": {"@type": "Person", "name": SITE["person"], "jobTitle": "Personal Trainer",
+                    "image": SITE["base_url"] + "assets/img/" + IMG_PREFIX + "about-1000.webp",
+                    "knowsAbout": ["Muay Thai", "Personal training", "Strength and conditioning", "Functional training"],
+                    "worksFor": {"@id": SITE["base_url"] + "#business"},
+                    "sameAs": [SITE["instagram"]]},
         "sameAs": [SITE["instagram"]],
     }
     if SITE["postcode"]:
@@ -163,7 +169,9 @@ def main():
         shutil.copytree(HERE / "static/video", OUT / "assets/video")
     (OUT / "assets/img").mkdir(parents=True)
     for f in (HERE / "static/img").iterdir():
-        if f.suffix in (".webp", ".jpg", ".svg", ".png"):
+        if f.suffix in (".webp", ".jpg", ".png"):
+            shutil.copy(f, OUT / "assets/img" / (IMG_PREFIX + f.name))
+        elif f.suffix == ".svg":
             shutil.copy(f, OUT / "assets/img" / f.name)
 
     urls = []
@@ -184,8 +192,23 @@ def main():
                 target = abs_url(lang, page) + ("#" + anchor if anchor else "")
                 redirect_page(f"{prefix}{old}/index.html", target)
         (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE['base_url']}sitemap.xml\n")
-        sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-        sm += [f"  <url><loc>{u}</loc></url>" for u in urls]
+        sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+        import re as _re
+        for u in urls:
+            rel = u[len(SITE["base_url"]):]
+            html = (OUT / (rel + "index.html")).read_text()
+            imgs = sorted(set(_re.findall(r'assets/img/(' + _re.escape(IMG_PREFIX) + r'[\w-]+\.(?:webp|jpg))', html)))
+            # alleen de grootste variant per foto
+            best = {}
+            for i in imgs:
+                m = _re.search(r'-(\d+)\.(webp|jpg)$', i)
+                key = _re.sub(r'-\d+\.(webp|jpg)$', '', i)
+                w = int(m.group(1)) if m else 0
+                if key not in best or w > best[key][0]:
+                    best[key] = (w, i)
+            best = {k: v[1] for k, v in best.items()}
+            entries = "".join(f"<image:image><image:loc>{SITE['base_url']}assets/img/{i}</image:loc></image:image>" for i in best.values())
+            sm.append(f"  <url><loc>{u}</loc>{entries}</url>")
         sm.append("</urlset>")
         (OUT / "sitemap.xml").write_text("\n".join(sm) + "\n")
         (OUT / ".nojekyll").write_text("")

@@ -12,7 +12,7 @@
 
 {% macro img(name, alt, sizes, cls='', eager=false) -%}
 {%- set widths = images[name][0] -%}{%- set ratio = images[name][1] -%}
-<img{% if cls %} class="{{ cls }}"{% endif %} src="{{ root }}assets/img/{{ name }}-{{ widths[-1] }}.webp" srcset="{% for w in widths %}{{ root }}assets/img/{{ name }}-{{ w }}.webp {{ w }}w{{ ', ' if not loop.last }}{% endfor %}" sizes="{{ sizes }}" width="{{ widths[0] }}" height="{{ (widths[0] / ratio)|round|int }}" alt="{{ alt }}" {% if eager %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}>
+<img{% if cls %} class="{{ cls }}"{% endif %} src="{{ root }}assets/img/casper-boekee-personal-trainer-{{ name }}-{{ widths[-1] }}.webp" srcset="{% for w in widths %}{{ root }}assets/img/casper-boekee-personal-trainer-{{ name }}-{{ w }}.webp {{ w }}w{{ ', ' if not loop.last }}{% endfor %}" sizes="{{ sizes }}" width="{{ widths[0] }}" height="{{ (widths[0] / ratio)|round|int }}" alt="{{ alt }}" {% if eager %}fetchpriority="high" decoding="async"{% else %}loading="lazy" decoding="async"{% endif %}>
 {%- endmacro %}
 
 {% macro head(eyebrow, title, tag='h2') -%}
