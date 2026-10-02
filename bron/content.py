@@ -721,6 +721,7 @@ EN["faq"]["items"].update({
     "injury": ("I have pain or an injury. Can I still train?", "Often, yes. I adjust the exercises to what's pain-free for you and build up step by step. I'm a personal trainer, not a doctor or physiotherapist, so with a medical condition or a recent injury, check with your GP or physiotherapist first. Tell me about it during the intro, so I can take it into account."),
     "price": ("What does personal training cost?", "A single 60-minute session is €85. A package of 10 sessions is €850, including an assessment at the start, a personal training plan and re-tests along the way."),
     "scan_what": ("What is the Performance Scan?", "A 90-minute assessment with more than 20 measurements of your body composition, posture, mobility, strength and conditioning. You get a personal report and training plan. It's a fitness assessment, not a medical examination."),
+    "member": ("Do I need to be a member of Patrick's Gym?", "No. You don't need a gym membership to train with me. You only pay for your personal training sessions."),
     "own": ("Do I get a plan for training on my own?", "Yes. You get your training plan on your phone, with sets, reps and weights, so you know exactly what to do when you train without me."),
 })
 NL["faq"]["items"].update({
@@ -732,6 +733,7 @@ NL["faq"]["items"].update({
     "injury": ("Ik heb pijn of een blessure. Kan ik toch trainen?", "Vaak wel. Ik pas de oefeningen aan op wat voor jou pijnvrij is en bouw stap voor stap op. Ik ben personal trainer, geen arts of fysiotherapeut, dus overleg bij een medische aandoening of een recente blessure eerst met je huisarts of fysiotherapeut. Vertel het me tijdens de kennismaking, dan houd ik er rekening mee."),
     "price": ("Wat kost personal training?", "Een losse sessie van 60 minuten kost €85. Een pakket van 10 sessies kost €850, inclusief een assessment bij de start, een persoonlijk trainingsplan en hertests onderweg."),
     "scan_what": ("Wat is de Performance Scan?", "Een assessment van 90 minuten met meer dan 20 metingen van je lichaamssamenstelling, houding, mobiliteit, kracht en conditie. Je krijgt een persoonlijk rapport en trainingsplan. Het is een fitheidsmeting, geen medisch onderzoek."),
+    "member": ("Moet ik lid zijn van Patrick's Gym?", "Nee. Je hoeft geen lid te zijn van de gym om met mij te trainen. Je betaalt alleen voor je personal trainingen."),
     "own": ("Krijg ik een schema voor als ik zelf train?", "Ja. Je krijgt je trainingsschema op je telefoon, met sets, herhalingen en gewichten, zodat je precies weet wat je doet als je zonder mij traint."),
 })
 
@@ -744,7 +746,7 @@ EN["faq_page"] = {
         ("The training", ["one", "coaching", "how_often", "own", "results", "injury"]),
         ("Muay Thai", ["mt", "mt_expect", "beginners"]),
         ("Prices and payment", ["price", "pay"]),
-        ("Location and Performance Scan", ["where", "scan_what"]),
+        ("Location and Performance Scan", ["where", "member", "scan_what"]),
     ],
 }
 NL["faq_page"] = {
@@ -756,7 +758,7 @@ NL["faq_page"] = {
         ("De training", ["one", "coaching", "how_often", "own", "results", "injury"]),
         ("Muay Thai", ["mt", "mt_expect", "beginners"]),
         ("Prijzen en betalen", ["price", "pay"]),
-        ("Locatie en Performance Scan", ["where", "scan_what"]),
+        ("Locatie en Performance Scan", ["where", "member", "scan_what"]),
     ],
 }
 
