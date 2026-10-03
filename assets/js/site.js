@@ -6,17 +6,33 @@
   var nav = document.getElementById('nav');
 
   /* Menu (mobiel) */
+  function isOpen() { return !!(header && header.classList.contains('is-open')); }
   function setMenu(open) {
     if (!header || !menuBtn) return;
+    var wasOpen = isOpen();
     header.classList.toggle('is-open', open);
     menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     var label = menuBtn.querySelector('.menu-btn__label');
     if (label) label.textContent = open ? menuBtn.dataset.close : menuBtn.dataset.open;
     document.documentElement.style.overflow = open ? 'hidden' : '';
+    /* Toetsenbord: bij openen naar de eerste link, bij sluiten terug naar de menuknop */
+    if (open && nav) {
+      var first = nav.querySelector('a');
+      if (first) first.focus();
+    } else if (wasOpen && !open && nav && nav.contains(document.activeElement)) {
+      menuBtn.focus();
+    }
   }
   if (menuBtn) {
     menuBtn.addEventListener('click', function () {
-      setMenu(!header.classList.contains('is-open'));
+      setMenu(!isOpen());
+    });
+    /* Tab vanaf de menuknop gaat weer naar het menu, zodat je er niet 'achter' terechtkomt */
+    menuBtn.addEventListener('keydown', function (e) {
+      if (e.key === 'Tab' && !e.shiftKey && isOpen() && nav) {
+        var first = nav.querySelector('a');
+        if (first) { e.preventDefault(); first.focus(); }
+      }
     });
   }
   if (nav) {
@@ -25,7 +41,7 @@
     });
   }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setMenu(false);
+    if (e.key === 'Escape' && isOpen()) setMenu(false);
   });
   window.addEventListener('resize', function () {
     if (window.innerWidth >= 1100) setMenu(false);
@@ -61,17 +77,27 @@
     function say(kind) {
       status.textContent = status.dataset[kind];
       status.hidden = false;
-      status.classList.toggle('is-error', kind === 'error');
+      status.classList.toggle('is-error', kind === 'error' || kind === 'invalid');
     }
+    /* Markering weghalen zodra een veld alsnog is ingevuld */
+    form.addEventListener('input', function (e) {
+      var el = e.target;
+      if (el.classList && el.classList.contains('is-invalid') && el.checkValidity()) {
+        el.classList.remove('is-invalid');
+        el.setAttribute('aria-invalid', 'false');
+      }
+    });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var ok = true;
       form.querySelectorAll('[required]').forEach(function (el) {
         var valid = el.checkValidity();
         el.classList.toggle('is-invalid', !valid);
+        el.setAttribute('aria-invalid', valid ? 'false' : 'true');
         if (!valid && ok) { el.focus(); ok = false; }
       });
-      if (!ok) return;
+      if (!ok) { say('invalid'); return; }
+      status.hidden = true;
       if (form.querySelector('[name="botcheck"]').checked) return;
       var key = form.dataset.key;
       if (!key) { say('demo'); return; }

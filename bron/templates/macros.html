@@ -77,7 +77,8 @@
     </div>
     <div class="price-notes">
       <p><a href="{{ href('performance-scan') }}">{{ t.scan_soon.prices if site.scan_soon else t.prices.scan }}</a></p>
-      <p>{{ t.prices.pay }}</p>
+      <p>{{ t.prices.vat }} {{ t.prices.pay }}</p>
+      <p>{{ t.prices.valid }} <a href="{{ href('terms') }}">{{ t.prices.terms_link }}</a></p>
     </div>
     <div class="price-cta">
       <p>{{ t.prices.start }}</p>
@@ -139,8 +140,8 @@
   </div>
   <button class="btn btn--block" type="submit" data-label="{{ t.contact.form.submit }}" data-sending="{{ t.contact.form.sending }}">{{ t.contact.form.submit }}</button>
   <p class="form__status" role="status" aria-live="polite" hidden
-     data-success="{{ t.contact.form.success }}" data-error="{{ t.contact.form.error }}" data-demo="{{ t.contact.form.demo }}"></p>
-  <p class="form__fine">{{ t.contact.form.privacy }} <a href="{{ href('privacy') }}">{{ t.contact.form.privacy_link }}</a></p>
+     data-success="{{ t.contact.form.success }}" data-error="{{ t.contact.form.error }}" data-demo="{{ t.contact.form.demo }}" data-invalid="{{ t.contact.form.invalid }}"></p>
+  <p class="form__fine">{{ t.contact.form.privacy }} <a href="{{ href('privacy') }}">{{ t.contact.form.privacy_link }}</a> · <a href="{{ href('terms') }}">{{ t.contact.form.terms_link }}</a></p>
 </form>
 {%- endmacro %}
 

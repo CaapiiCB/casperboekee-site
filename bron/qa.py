@@ -4,13 +4,7 @@ from pathlib import Path
 from playwright.async_api import async_playwright
 OUT = Path('out/preview').resolve()
 SHOTS = Path('qa'); SHOTS.mkdir(exist_ok=True)
-FONT_CSS = '''
-@font-face{font-family:"Anton";src:local("DejaVu Sans Condensed Bold"),local("DejaVuSansCondensed-Bold");size-adjust:70%;}
-@font-face{font-family:"Barlow";src:local("DejaVu Sans");size-adjust:88%;}
-@font-face{font-family:"Barlow";font-weight:600;src:local("DejaVu Sans Bold");size-adjust:88%;}
-@font-face{font-family:"Barlow Condensed";src:local("DejaVu Sans Condensed");size-adjust:86%;}
-@font-face{font-family:"Barlow Condensed";font-weight:600;src:local("DejaVu Sans Condensed Bold");size-adjust:82%;}
-'''
+# De lettertypes staan sinds okt 2026 op de site zelf (static/fonts), dus de screenshots gebruiken de echte fonts.
 # De hoofdpagina is een fragment; zet er het skelet omheen zoals de viewer dat doet.
 frag = (OUT/'index.html').read_text()
 (OUT/'_main.html').write_text('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui;background:#faf9f5}img{max-width:100%}[hidden]{display:none!important}</style></head><body>'+frag+'</body></html>')
@@ -30,7 +24,6 @@ async def main():
                 pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' and 'ERR_FAILED' not in m.text and 'net::' not in m.text else None)
                 pg.on('pageerror', lambda e: errs.append(str(e)))
                 await pg.goto((OUT/rel).as_uri())
-                await pg.add_style_tag(content=FONT_CSS)
                 await pg.wait_for_timeout(250)
                 # lazy images laden
                 await pg.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager')")

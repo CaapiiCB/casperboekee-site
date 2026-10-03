@@ -16,6 +16,10 @@ Website van Casper Boekee Personal Training (personal trainer in Amsterdam; Muay
 ## Vaste afspraken
 - Tweetalig: Engels op `/`, Nederlands op `/nl/`. Elke tekstwijziging in beide talen.
 - Prijzen (één plek in `SITE`): €85 per sessie, €850 voor 10, Performance Scan €250. Benadruk dat intake/assessments inbegrepen zijn.
+- Btw: `vat_mode` in `SITE` is `"btw"` (btw-plichtig: "incl. 21% btw" bij de prijzen, btw-id in de footer zodra `vat_id` is ingevuld). Zet op `"kor"` zodra Casper met de kleineondernemersregeling start (dan verdwijnt de btw-tekst). Facturen maakt Casper in zijn PT Business App; daar moet de btw-instelling hetzelfde staan.
+- Algemene voorwaarden: pagina `/terms/` en `/nl/terms/` (tekst in `EN["terms"]`/`NL["terms"]`). Vaste regels: betaaltermijn 14 dagen, pakket vooraf betalen, afzeggen tot 24 uur kosteloos, 10-rittenkaart 6 maanden geldig (verlenging bij blessure/ziekte/zwangerschap, persoonlijk, niet overdraagbaar), geen geld terug behalve bij blijvende medische reden, 14 dagen bedenktijd bij boeken op afstand, onder 16 toestemming van ouder/voogd, foto's alleen met toestemming. Wijzig je een regel, pas dan ook de FAQ (`pay`, `valid`, `cancel`, `refund`, `minors`) en de prijzentekst aan.
+- Geen beloftes over resultaat of pijn ("je wordt sterker" → "we werken eraan dat je sterker wordt").
+- Lettertypes (Anton, Barlow, Barlow Condensed) staan in `bron/static/fonts/` (OFL-licentie) en worden via `@font-face` in `site.css` geladen. Niet (opnieuw) via Google Fonts laden: dat stuurt bezoekers-IP's naar Google en staat zo niet in de privacyverklaring.
 - Performance Scan staat op "binnenkort" (`scan_soon: True`). Pas op `False` zetten als Casper dat zegt.
 - Casper is PT, geen arts: geen medische claims of diagnoses; de scan is screening, geen medisch onderzoek. Disclaimer-pagina bestaat (`/disclaimer/`).
 - Huisstijl: zwart + oranje.

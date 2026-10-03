@@ -32,6 +32,15 @@ SITE = {
     "price_single": "€85",
     "price_ten": "€850",
     "price_scan": "€250",
+    # Btw: "btw" = btw-plichtig (prijzen incl. 21% btw, btw-id in de footer); "kor" = kleineondernemersregeling (geen btw).
+    "vat_mode": "btw",
+    "vat_rate": "21",
+    # Btw-identificatienummer (NL123456789B01). Leeg = niet getoond. Invullen zodra bekend!
+    "vat_id": "",
+    # Voorwaarden (ook gebruikt in teksten): rittenkaart geldig in maanden, betaaltermijn in dagen, minimumleeftijd zonder ouder.
+    "pack_months": 6,
+    "pay_days": 14,
+    "min_age": 16,
     # Performance Scan nog niet te boeken: True = label "Binnenkort" + wachtlijst. Zet op False zodra je hem aanbiedt.
     "scan_soon": True,
     # Later: link naar de klantomgeving van het PT-systeem. Leeg = knop wordt niet getoond.
@@ -42,6 +51,10 @@ SITE = {
     "reviews": [],
     "clips": [{"src": "assets/video/padwork.mp4", "poster": "assets/img/casper-boekee-personal-trainer-padwork-poster.jpg", "w": 720, "h": 1280}],
 }
+
+# Zin over de bezoekersteller in de privacyverklaring (alleen als GoatCounter aanstaat).
+_GC_EN = " To see how the website is used, I count visits with GoatCounter. It uses no cookies and stores no personal data or full IP addresses, so you can't be identified." if SITE["goatcounter"] else ""
+_GC_NL = " Om te zien hoe de website gebruikt wordt, tel ik bezoeken met GoatCounter. Dat gebruikt geen cookies en bewaart geen persoonsgegevens of volledige IP-adressen, dus je bent niet herkenbaar." if SITE["goatcounter"] else ""
 
 EN = {
     "lang": "en",
@@ -72,7 +85,7 @@ EN = {
         },
         "personal-training": {
             "title": "Personal Training Amsterdam | Functional Strength | Casper Boekee",
-            "desc": "1-on-1 personal training in Amsterdam. Get stronger, fitter and move with less pain with a clear plan and measurable progress. Free 30-minute intro at Patrick's Gym.",
+            "desc": "1-on-1 personal training in Amsterdam. Work towards getting stronger, fitter and moving with less pain, with a clear plan and measurable progress. Free 30-minute intro at Patrick's Gym.",
         },
         "muay-thai": {
             "title": "Muay Thai Training Amsterdam | 1-on-1 | Casper Boekee",
@@ -94,11 +107,15 @@ EN = {
             "title": "Disclaimer | Casper Boekee",
             "desc": "Disclaimer of Casper Boekee Personal Training: information on this website, no medical advice, training responsibility and liability.",
         },
+        "terms": {
+            "title": "Terms and Conditions | Casper Boekee",
+            "desc": "Terms and conditions of Casper Boekee Personal Training: booking, cancelling, payment, validity of packages, refunds, right of withdrawal, health and liability.",
+        },
     },
     "home": {
         "eyebrow": "Personal trainer · Amsterdam",
         "lockup": ["Muay Thai", "& Functional Strength", "Personal Training"],
-        "lead": "1-on-1 personal training in Amsterdam. Get stronger, fitter and move with less pain, with a clear plan and measurable progress.",
+        "lead": "1-on-1 personal training in Amsterdam. We work towards getting you stronger, fitter and moving with less pain, with a clear plan and measurable progress.",
         "hero_alt": "Casper Boekee holding Thai pads for a client in the ring at Patrick's Gym",
         "services_eyebrow": "Training",
         "services_h": "Two ways to train. One clear plan.",
@@ -154,7 +171,9 @@ EN = {
             "plus": ["Premium performance assessment at the start", "Personal training plan built around your goal", "Re-tests along the way, so you see your progress in numbers"],
         },
         "scan": "Performance Scan · 90 min · €250. Fully deducted when you start a 10-session package or coaching programme within 14 days.",
-        "pay": "You'll receive an invoice by email. Pay with iDEAL or bank transfer.",
+        "pay": "You'll receive an invoice by email, payable within 14 days by iDEAL or bank transfer. A package is paid before the first session.",
+        "valid": "A 10-session package is valid for 6 months. Cancel or reschedule free of charge up to 24 hours in advance.",
+        "terms_link": "Terms and conditions",
         "start": "Not sure yet? Start with a free 30-minute intro.",
     },
     "about": {
@@ -179,7 +198,7 @@ EN = {
         "eyebrow": "FAQ",
         "h": "Frequently asked questions",
         "items": {
-            "results": ("What results can I expect?", "You get stronger, fitter and move with less pain, with progress you can measure. We test at the start and re-test regularly, so you see it in numbers."),
+            "results": ("What results can I expect?", "We work towards getting you stronger, fitter and moving with less pain, with progress you can measure. We test at the start and re-test regularly, so you see what has changed in numbers. How fast you progress depends on your starting point, how often you train and what you do outside the gym, so I can't promise a specific result."),
             "one": ("Is the training 1-on-1?", "Yes. Every session is 1-on-1, tailored to your goal and level."),
             "coaching": ("What does the coaching look like?", "You get a clear plan instead of random workouts. We start with an intro and an assessment, then train 1-on-1 and re-test regularly, so your progress stays visible."),
             "mt": ("Do you offer Muay Thai sessions?", "Yes. You can book Muay Thai on its own or combine it with strength training, depending on your goal."),
@@ -187,7 +206,7 @@ EN = {
             "beginners": ("Is Muay Thai suitable for beginners?", "Absolutely. I coach complete beginners to experienced fighters, step by step."),
             "where": ("Where do the sessions take place?", "At Patrick's Gym, Marius Bauerstraat 28, 1062 AR Amsterdam."),
             "book": ("How do I book a session?", "Request a free intro through the form or send a WhatsApp. I'll reply personally within 24 hours."),
-            "pay": ("How do I pay?", "You'll receive an invoice by email. Pay with iDEAL or bank transfer."),
+            "pay": ("How do I pay?", "You'll receive an invoice by email, payable within 14 days by iDEAL or bank transfer. A 10-session package and the Performance Scan are paid before the first session; single sessions are invoiced afterwards. Prices include 21% VAT."),
         },
     },
     "contact": {
@@ -207,8 +226,10 @@ EN = {
             "placeholder": "Tell me briefly what you want to achieve",
             "submit": "Request free intro",
             "sending": "Sending…",
-            "privacy": "I only use your details to reply to your request.",
+            "privacy": "I only use your details to reply to your request. Under 16? Ask a parent or guardian to send the request.",
             "privacy_link": "Privacy statement",
+            "terms_link": "Terms and conditions",
+            "invalid": "Please check the highlighted fields.",
             "success": "Thanks! Your request is in. I'll get back to you personally.",
             "error": "Something went wrong. Please send a WhatsApp or email info@casperboekee.com.",
             "demo": "Test mode: the form isn't connected yet, so nothing was sent.",
@@ -220,6 +241,8 @@ EN = {
         "kvk": "Chamber of Commerce",
         "rights": "All rights reserved.",
         "privacy": "Privacy",
+        "terms": "Terms",
+        "vat": "VAT ID",
         "portal": "Client login",
     },
     "soon": "Coming soon",
@@ -235,7 +258,7 @@ EN = {
         "eyebrow": "Personal training · Amsterdam",
         "h1": "Personal Training",
         "sub": "Functional Strength",
-        "lead": "Stronger, fitter and moving with less pain. You train 1-on-1 with a plan built around your goal, your schedule and your body.",
+        "lead": "Working towards stronger, fitter and moving with less pain. You train 1-on-1 with a plan built around your goal, your schedule and your body.",
         "hero_alt": "Casper Boekee coaching a client on the pads at Patrick's Gym",
         "feat_eyebrow": "What we work on",
         "feat_h": "Strength you can use.",
@@ -338,14 +361,17 @@ EN = {
     "privacy": {
         "eyebrow": "Privacy",
         "h1": "Privacy statement",
-        "updated": "Last updated: 30 September 2026",
+        "updated": "Last updated: 3 October 2026",
         "sections": [
-            ("Who I am", ["Casper Boekee Personal Training, Amsterdam. Chamber of Commerce number 89761286. For questions about your data: info@casperboekee.com."]),
-            ("What I collect", ["When you send the contact form, I receive your name, email address, phone number (if you fill it in), what you're interested in and your message.", "Please don't share medical details in the form. We discuss those in person during the intake."]),
-            ("Why", ["I use your details only to reply to your request and to plan your intro or session. I don't use them for newsletters or advertising."]),
-            ("How long", ["I keep your request for as long as needed to handle it. If you don't become a client, I delete it within 12 months."]),
-            ("Who else processes it", ["The form is delivered to my mailbox by Web3Forms. My email is hosted by Google. This website is hosted by GitHub Pages, which logs visitors' IP addresses for security, and loads its fonts from Google Fonts.", "This website doesn't use analytics or tracking cookies."]),
-            ("Your rights", ["You can ask me to see, correct or delete your data at any time by emailing info@casperboekee.com. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens)."]),
+            ("Who I am", ["Casper Boekee Personal Training, Marius Bauerstraat 28, 1062 AR Amsterdam. Chamber of Commerce number 89761286. I'm responsible for how your data is handled. Questions about your data: info@casperboekee.com."]),
+            ("When you send the contact form", ["I receive your name, email address, phone number (if you fill it in), what you're interested in and your message. I use these only to reply to your request and to plan your intro or session. Legal basis: the steps you ask me to take before we enter into an agreement (article 6(1)(b) GDPR).", "Please don't share medical details in the form. We discuss those in person during the intake.", "I don't use your details for newsletters or advertising."]),
+            ("When you become a client", ["I keep your contact details, your intake, your training plan, what we trained and your test results, so I can coach you and send invoices. Legal basis: the agreement we have. I'm legally required to keep invoices for 7 years.", "Details about your health, such as injuries, complaints or medication, are special-category data. I record them only with your explicit consent and only to make your training safe and suitable. You can withdraw that consent at any time; I'll then delete them."]),
+            ("How long", ["A request through the form: until it has been handled. If you don't become a client, I delete it within 12 months.", "Client details: up to 2 years after your last session, so we can pick up where we left off if you return. Invoices: 7 years, as required by tax law."]),
+            ("Who else processes your data", ["Web3Forms delivers the contact form to my mailbox. My email and calendar are hosted by Google. This website is hosted by GitHub Pages, which logs visitors' IP addresses for security." + _GC_EN, "Web3Forms and Google may process data outside the EU, for example in the United States. That only happens with the safeguards the GDPR requires, such as the EU-US Data Privacy Framework or the European Commission's standard contractual clauses.", "The fonts of this website are hosted on my own site, so no data is sent to Google Fonts. This website doesn't use tracking cookies."]),
+            ("Under 16", ["If you're under 16, I only process your details with permission from a parent or guardian. Ask them to send the request."]),
+            ("Photos and videos", ["I only publish photos or videos in which you're recognisable, for example on Instagram or this website, with your prior permission. You can withdraw it at any time, and I'll remove the images as soon as possible."]),
+            ("Your rights", ["You can ask me to see, correct, delete or transfer your data, to limit its use or to object, and you can withdraw your consent at any time: email info@casperboekee.com. You can also file a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens)."]),
+            ("Security", ["Your data is stored in secured accounts that only I have access to."]),
         ],
     },
     "disclaimer": {
@@ -356,7 +382,7 @@ EN = {
             ("Information on this website", ["The information on casperboekee.com is general and meant as information only. It is not personal advice and not medical advice. I do my best to keep everything correct and up to date, but I can't guarantee that it is always complete or free of errors.", "Prices and offers on this website may change. The price that applies is the one we agree on before you start."]),
             ("Not medical advice", ["I am a personal trainer, not a doctor or physiotherapist. My training, assessments and advice are not a medical examination and don't give a diagnosis.", "Do you have a medical condition, an injury, high blood pressure, heart problems, are you pregnant or taking medication? Check with your GP or specialist before you start training. Let me know about anything that may affect your training, so I can adjust it."]),
             ("Training and your own responsibility", ["Training always carries some risk of injury. I coach carefully and adjust every session to your level, but you are responsible for telling me how you feel and for stopping when something doesn't feel right.", "Follow my instructions during sessions and tell me straight away if you feel pain, dizziness or anything unusual."]),
-            ("Liability", ["I am not liable for damage or injury resulting from the use of information on this website, or from training outside my supervision.", "This doesn't limit liability that by law cannot be limited, such as damage caused by intent or gross negligence."]),
+            ("Liability", ["I am not liable for damage or injury resulting from the use of information on this website, or from training outside my supervision.", "This doesn't limit liability that by law cannot be limited, such as damage caused by intent or gross negligence.", "For sessions, packages and the Performance Scan, the terms and conditions on this website apply."]),
             ("Links to other websites", ["This website links to other websites, such as Instagram, WhatsApp and Google Maps. I am not responsible for the content or privacy practices of those websites."]),
             ("Copyright", ["All texts, photos and videos on this website belong to Casper Boekee Personal Training, unless stated otherwise. You may not copy or use them without my written permission."]),
             ("Questions", ["Questions about this disclaimer? Email info@casperboekee.com."]),
@@ -394,7 +420,7 @@ NL = {
         },
         "personal-training": {
             "title": "Personal Training Amsterdam | Functionele Kracht | Casper Boekee",
-            "desc": "1-op-1 personal training in Amsterdam. Word sterker, fitter en beweeg met minder pijn, met een duidelijk plan en meetbare progressie. Gratis kennismaking bij Patrick's Gym.",
+            "desc": "1-op-1 personal training in Amsterdam. Werk aan sterker en fitter worden en bewegen met minder pijn, met een duidelijk plan en meetbare progressie. Gratis kennismaking bij Patrick's Gym.",
         },
         "muay-thai": {
             "title": "Muay Thai Training Amsterdam | 1-op-1 | Casper Boekee",
@@ -416,11 +442,15 @@ NL = {
             "title": "Disclaimer | Casper Boekee",
             "desc": "Disclaimer van Casper Boekee Personal Training: informatie op deze website, geen medisch advies, eigen verantwoordelijkheid en aansprakelijkheid.",
         },
+        "terms": {
+            "title": "Algemene voorwaarden | Casper Boekee",
+            "desc": "Algemene voorwaarden van Casper Boekee Personal Training: boeken, afzeggen, betalen, geldigheid van de rittenkaart, geld terug, herroepingsrecht, gezondheid en aansprakelijkheid.",
+        },
     },
     "home": {
         "eyebrow": "Personal trainer · Amsterdam",
         "lockup": ["Muay Thai", "& Functionele Kracht", "Personal Training"],
-        "lead": "1-op-1 personal training in Amsterdam. Word sterker, fitter en beweeg met minder pijn, met een duidelijk plan en meetbare progressie.",
+        "lead": "1-op-1 personal training in Amsterdam. Samen werken we eraan dat je sterker en fitter wordt en met minder pijn beweegt, met een duidelijk plan en meetbare progressie.",
         "hero_alt": "Casper Boekee houdt Thai pads vast voor een klant in de ring bij Patrick's Gym",
         "services_eyebrow": "Training",
         "services_h": "Twee manieren om te trainen. Eén duidelijk plan.",
@@ -476,7 +506,9 @@ NL = {
             "plus": ["Premium performance assessment bij de start", "Persoonlijk trainingsplan, afgestemd op je doel", "Hertests onderweg, zodat je je progressie in cijfers ziet"],
         },
         "scan": "Performance Scan · 90 min · €250. Wordt volledig verrekend als je binnen 14 dagen start met een 10-sessiepakket of coachingtraject.",
-        "pay": "Je ontvangt een factuur per e-mail. Betalen kan met iDEAL of bankoverschrijving.",
+        "pay": "Je ontvangt een factuur per e-mail, te betalen binnen 14 dagen met iDEAL of bankoverschrijving. Een pakket betaal je vóór de eerste sessie.",
+        "valid": "Een 10-rittenkaart is 6 maanden geldig. Tot 24 uur van tevoren kun je kosteloos afzeggen of verzetten.",
+        "terms_link": "Algemene voorwaarden",
         "start": "Nog niet zeker? Begin met een gratis kennismaking van 30 minuten.",
     },
     "about": {
@@ -501,7 +533,7 @@ NL = {
         "eyebrow": "FAQ",
         "h": "Veelgestelde vragen",
         "items": {
-            "results": ("Welke resultaten kan ik verwachten?", "Je wordt sterker en fitter en beweegt met minder pijn, met progressie die je kunt meten. We testen bij de start en daarna regelmatig opnieuw, zodat je het in cijfers terugziet."),
+            "results": ("Welke resultaten kan ik verwachten?", "We werken eraan dat je sterker en fitter wordt en met minder pijn beweegt, met progressie die je kunt meten. We testen bij de start en daarna regelmatig opnieuw, zodat je in cijfers ziet wat er veranderd is. Hoe snel je vooruitgaat, hangt af van je startpunt, hoe vaak je traint en wat je buiten de gym doet, dus een specifiek resultaat kan ik niet beloven."),
             "one": ("Is de training 1-op-1?", "Ja. Elke sessie is 1-op-1 en afgestemd op jouw doel en niveau."),
             "coaching": ("Hoe ziet de coaching eruit?", "Je krijgt een duidelijk plan in plaats van losse workouts. We beginnen met een kennismaking en een assessment, trainen daarna 1-op-1 en testen regelmatig opnieuw, zodat je vooruitgang zichtbaar blijft."),
             "mt": ("Geef je ook Muay Thai-trainingen?", "Ja. Je kunt Muay Thai los boeken of combineren met krachttraining, afhankelijk van je doel."),
@@ -509,7 +541,7 @@ NL = {
             "beginners": ("Is Muay Thai geschikt voor beginners?", "Zeker. Ik coach complete beginners tot ervaren vechters, stap voor stap."),
             "where": ("Waar vinden de trainingen plaats?", "Bij Patrick's Gym, Marius Bauerstraat 28, 1062 AR Amsterdam."),
             "book": ("Hoe boek ik een training?", "Vraag een gratis kennismaking aan via het formulier of stuur een WhatsApp. Ik reageer persoonlijk binnen 24 uur."),
-            "pay": ("Hoe betaal ik?", "Je ontvangt een factuur per e-mail. Betalen kan met iDEAL of bankoverschrijving."),
+            "pay": ("Hoe betaal ik?", "Je ontvangt een factuur per e-mail, te betalen binnen 14 dagen met iDEAL of bankoverschrijving. Een 10-rittenkaart en de Performance Scan betaal je vóór de eerste sessie; losse sessies factureer ik achteraf. Prijzen zijn inclusief 21% btw."),
         },
     },
     "contact": {
@@ -529,8 +561,10 @@ NL = {
             "placeholder": "Vertel kort wat je wilt bereiken",
             "submit": "Vraag gratis kennismaking aan",
             "sending": "Versturen…",
-            "privacy": "Ik gebruik je gegevens alleen om op je aanvraag te reageren.",
+            "privacy": "Ik gebruik je gegevens alleen om op je aanvraag te reageren. Jonger dan 16? Vraag je ouder of voogd om de aanvraag te versturen.",
             "privacy_link": "Privacyverklaring",
+            "terms_link": "Algemene voorwaarden",
+            "invalid": "Controleer de gemarkeerde velden.",
             "success": "Bedankt! Je aanvraag is binnen. Ik neem persoonlijk contact met je op.",
             "error": "Er ging iets mis. Stuur een WhatsApp of mail naar info@casperboekee.com.",
             "demo": "Testmodus: het formulier is nog niet gekoppeld, dus er is niets verstuurd.",
@@ -542,6 +576,8 @@ NL = {
         "kvk": "KvK",
         "rights": "Alle rechten voorbehouden.",
         "privacy": "Privacy",
+        "terms": "Voorwaarden",
+        "vat": "Btw-id",
         "portal": "Klantomgeving",
     },
     "soon": "Binnenkort",
@@ -557,7 +593,7 @@ NL = {
         "eyebrow": "Personal training · Amsterdam",
         "h1": "Personal Training",
         "sub": "Functionele Kracht",
-        "lead": "Sterker, fitter en bewegen met minder pijn. Je traint 1-op-1 met een plan dat past bij je doel, je agenda en je lichaam.",
+        "lead": "Werken aan sterker, fitter en bewegen met minder pijn. Je traint 1-op-1 met een plan dat past bij je doel, je agenda en je lichaam.",
         "hero_alt": "Casper Boekee coacht een klant op de pads bij Patrick's Gym",
         "feat_eyebrow": "Waar we aan werken",
         "feat_h": "Kracht waar je iets aan hebt.",
@@ -660,14 +696,17 @@ NL = {
     "privacy": {
         "eyebrow": "Privacy",
         "h1": "Privacyverklaring",
-        "updated": "Laatst bijgewerkt: 30 september 2026",
+        "updated": "Laatst bijgewerkt: 3 oktober 2026",
         "sections": [
-            ("Wie ik ben", ["Casper Boekee Personal Training, Amsterdam. KvK-nummer 89761286. Voor vragen over je gegevens: info@casperboekee.com."]),
-            ("Wat ik verzamel", ["Als je het contactformulier verstuurt, ontvang ik je naam, e-mailadres, telefoonnummer (als je dat invult), waar je interesse in hebt en je bericht.", "Deel in het formulier liever geen medische gegevens. Die bespreken we persoonlijk tijdens de intake."]),
-            ("Waarom", ["Ik gebruik je gegevens alleen om op je aanvraag te reageren en je kennismaking of training te plannen. Ik gebruik ze niet voor nieuwsbrieven of advertenties."]),
-            ("Hoe lang", ["Ik bewaar je aanvraag zolang dat nodig is om hem af te handelen. Word je geen klant, dan verwijder ik hem binnen 12 maanden."]),
-            ("Wie verwerkt het nog meer", ["Het formulier wordt door Web3Forms bij mijn mailbox afgeleverd. Mijn e-mail staat bij Google. Deze website staat bij GitHub Pages, dat voor de beveiliging IP-adressen van bezoekers vastlegt, en laadt de lettertypes van Google Fonts.", "Deze website gebruikt geen statistieken of tracking-cookies."]),
-            ("Jouw rechten", ["Je kunt me altijd vragen je gegevens in te zien, te corrigeren of te verwijderen via info@casperboekee.com. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens."]),
+            ("Wie ik ben", ["Casper Boekee Personal Training, Marius Bauerstraat 28, 1062 AR Amsterdam. KvK-nummer 89761286. Ik ben verantwoordelijk voor de verwerking van je gegevens. Vragen over je gegevens: info@casperboekee.com."]),
+            ("Als je het contactformulier verstuurt", ["Ik ontvang je naam, e-mailadres, telefoonnummer (als je dat invult), waar je interesse in hebt en je bericht. Die gebruik ik alleen om op je aanvraag te reageren en je kennismaking of training te plannen. Grondslag: de stappen die je mij vraagt te zetten voordat we een overeenkomst sluiten (artikel 6 lid 1 onder b AVG).", "Deel in het formulier liever geen medische gegevens. Die bespreken we persoonlijk tijdens de intake.", "Ik gebruik je gegevens niet voor nieuwsbrieven of advertenties."]),
+            ("Als je klant wordt", ["Ik bewaar je contactgegevens, je intake, je trainingsplan, wat we getraind hebben en je testresultaten, zodat ik je kan coachen en facturen kan sturen. Grondslag: de overeenkomst die we hebben. Facturen moet ik volgens de wet 7 jaar bewaren.", "Gegevens over je gezondheid, zoals blessures, klachten of medicijngebruik, zijn bijzondere persoonsgegevens. Die leg ik alleen vast met jouw uitdrukkelijke toestemming en alleen om je training veilig en passend te maken. Je kunt die toestemming altijd intrekken; dan verwijder ik ze."]),
+            ("Hoe lang", ["Een aanvraag via het formulier: tot hij is afgehandeld. Word je geen klant, dan verwijder ik hem binnen 12 maanden.", "Klantgegevens: tot 2 jaar na je laatste training, zodat we verder kunnen waar we gebleven waren als je terugkomt. Facturen: 7 jaar, zoals de belastingwet voorschrijft."]),
+            ("Wie verwerkt je gegevens nog meer", ["Web3Forms levert het contactformulier af in mijn mailbox. Mijn e-mail en agenda staan bij Google. Deze website staat bij GitHub Pages, dat voor de beveiliging IP-adressen van bezoekers vastlegt." + _GC_NL, "Web3Forms en Google kunnen gegevens buiten de EU verwerken, bijvoorbeeld in de Verenigde Staten. Dat gebeurt alleen met de waarborgen die de AVG eist, zoals het EU-VS Data Privacy Framework of de standaardcontractbepalingen van de Europese Commissie.", "De lettertypes van deze website staan op mijn eigen site, dus er gaan geen gegevens naar Google Fonts. Deze website gebruikt geen tracking-cookies."]),
+            ("Jonger dan 16", ["Ben je jonger dan 16? Dan verwerk ik je gegevens alleen met toestemming van je ouder of voogd. Vraag hen om de aanvraag te versturen."]),
+            ("Foto's en video's", ["Foto's of video's waarop je herkenbaar bent, bijvoorbeeld op Instagram of deze website, plaats ik alleen met jouw toestemming vooraf. Je kunt die altijd intrekken; dan haal ik de beelden zo snel mogelijk weg."]),
+            ("Jouw rechten", ["Je kunt me vragen je gegevens in te zien, te corrigeren, te verwijderen of over te dragen, het gebruik te beperken of bezwaar te maken, en je kunt je toestemming altijd intrekken: mail naar info@casperboekee.com. Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens."]),
+            ("Beveiliging", ["Je gegevens staan in beveiligde accounts waar alleen ik toegang toe heb."]),
         ],
     },
     "disclaimer": {
@@ -678,7 +717,7 @@ NL = {
             ("Informatie op deze website", ["De informatie op casperboekee.com is algemeen en alleen bedoeld als informatie. Het is geen persoonlijk advies en geen medisch advies. Ik doe mijn best om alles juist en actueel te houden, maar kan niet garanderen dat het altijd volledig en foutloos is.", "Prijzen en aanbiedingen op deze website kunnen veranderen. De prijs die geldt, is de prijs die we samen afspreken voordat je start."]),
             ("Geen medisch advies", ["Ik ben personal trainer, geen arts of fysiotherapeut. Mijn trainingen, metingen en adviezen zijn geen medisch onderzoek en geven geen diagnose.", "Heb je een medische aandoening, een blessure, hoge bloeddruk of hartklachten, ben je zwanger of gebruik je medicijnen? Overleg dan eerst met je huisarts of specialist voordat je gaat trainen. Vertel mij alles wat invloed kan hebben op je training, zodat ik die kan aanpassen."]),
             ("Trainen en je eigen verantwoordelijkheid", ["Trainen brengt altijd een zeker risico op blessures met zich mee. Ik coach zorgvuldig en stem elke training af op jouw niveau, maar jij bent er zelf verantwoordelijk voor om aan te geven hoe je je voelt en te stoppen als iets niet goed voelt.", "Volg tijdens de training mijn aanwijzingen op en meld het direct als je pijn hebt, duizelig wordt of iets anders vreemds merkt."]),
-            ("Aansprakelijkheid", ["Ik ben niet aansprakelijk voor schade of letsel door het gebruik van informatie op deze website, of door trainen zonder mijn begeleiding.", "Dit beperkt geen aansprakelijkheid die volgens de wet niet beperkt mag worden, zoals bij schade door opzet of grove nalatigheid."]),
+            ("Aansprakelijkheid", ["Ik ben niet aansprakelijk voor schade of letsel door het gebruik van informatie op deze website, of door trainen zonder mijn begeleiding.", "Dit beperkt geen aansprakelijkheid die volgens de wet niet beperkt mag worden, zoals bij schade door opzet of grove nalatigheid.", "Voor trainingen, pakketten en de Performance Scan gelden de algemene voorwaarden op deze website."]),
             ("Links naar andere websites", ["Deze website linkt naar andere websites, zoals Instagram, WhatsApp en Google Maps. Ik ben niet verantwoordelijk voor de inhoud of het privacybeleid van die websites."]),
             ("Auteursrecht", ["Alle teksten, foto's en video's op deze website zijn van Casper Boekee Personal Training, tenzij anders vermeld. Je mag ze niet kopiëren of gebruiken zonder mijn schriftelijke toestemming."]),
             ("Vragen", ["Vragen over deze disclaimer? Mail naar info@casperboekee.com."]),
@@ -687,9 +726,6 @@ NL = {
     "notfound": {"h1": "Pagina niet gevonden", "p": "Deze pagina bestaat niet (meer).", "link": "Terug naar home"},
 }
 
-if SITE["goatcounter"]:
-    EN["privacy"]["sections"][4][1][1] = "To see how the website is used, I count visits with GoatCounter. It uses no cookies and stores no personal data or full IP addresses, so you can't be identified."
-    NL["privacy"]["sections"][4][1][1] = "Om te zien hoe de website gebruikt wordt, tel ik bezoeken met GoatCounter. Dat gebruikt geen cookies en bewaart geen persoonsgegevens of volledige IP-adressen, dus je bent niet herkenbaar."
 
 
 # ---------------------------------------------------------------------------
@@ -719,7 +755,7 @@ EN["faq"]["items"].update({
     "english": ("Do you coach in English?", "Yes. I coach in both Dutch and English."),
     "how_often": ("How often should I train?", "Most clients train with me one to three times a week, sometimes combined with sessions on their own. During the intro we decide what fits your goal and your schedule."),
     "injury": ("I have pain or an injury. Can I still train?", "Often, yes. I adjust the exercises to what's pain-free for you and build up step by step. I'm a personal trainer, not a doctor or physiotherapist, so with a medical condition or a recent injury, check with your GP or physiotherapist first. Tell me about it during the intro, so I can take it into account."),
-    "price": ("What does personal training cost?", "A single 60-minute session is €85. A package of 10 sessions is €850, including an assessment at the start, a personal training plan and re-tests along the way."),
+    "price": ("What does personal training cost?", "A single 60-minute session is €85. A package of 10 sessions is €850, including an assessment at the start, a personal training plan and re-tests along the way. Prices include VAT."),
     "scan_what": ("What is the Performance Scan?", "A 90-minute assessment with more than 20 measurements of your body composition, posture, mobility, strength and conditioning. You get a personal report and training plan. It's a fitness assessment, not a medical examination."),
     "cancel": ("Can I cancel or reschedule a session?", "Yes. You can cancel or reschedule free of charge up to 24 hours in advance. If you cancel later or don't show up, the session is charged or deducted from your package."),
     "member": ("Do I need to be a member of Patrick's Gym?", "No. You don't need a gym membership to train with me. You only pay for your personal training sessions. Want to train on your own at Patrick's Gym as well? For that you need a membership at the gym."),
@@ -732,7 +768,7 @@ NL["faq"]["items"].update({
     "english": ("Train je ook in het Engels?", "Ja. Ik coach in het Nederlands en in het Engels."),
     "how_often": ("Hoe vaak moet ik trainen?", "De meeste klanten trainen één tot drie keer per week met mij, soms aangevuld met trainingen op eigen houtje. Tijdens de kennismaking bepalen we wat past bij je doel en je agenda."),
     "injury": ("Ik heb pijn of een blessure. Kan ik toch trainen?", "Vaak wel. Ik pas de oefeningen aan op wat voor jou pijnvrij is en bouw stap voor stap op. Ik ben personal trainer, geen arts of fysiotherapeut, dus overleg bij een medische aandoening of een recente blessure eerst met je huisarts of fysiotherapeut. Vertel het me tijdens de kennismaking, dan houd ik er rekening mee."),
-    "price": ("Wat kost personal training?", "Een losse sessie van 60 minuten kost €85. Een pakket van 10 sessies kost €850, inclusief een assessment bij de start, een persoonlijk trainingsplan en hertests onderweg."),
+    "price": ("Wat kost personal training?", "Een losse sessie van 60 minuten kost €85. Een pakket van 10 sessies kost €850, inclusief een assessment bij de start, een persoonlijk trainingsplan en hertests onderweg. Prijzen zijn inclusief btw."),
     "scan_what": ("Wat is de Performance Scan?", "Een assessment van 90 minuten met meer dan 20 metingen van je lichaamssamenstelling, houding, mobiliteit, kracht en conditie. Je krijgt een persoonlijk rapport en trainingsplan. Het is een fitheidsmeting, geen medisch onderzoek."),
     "cancel": ("Kan ik een sessie afzeggen of verzetten?", "Ja. Tot 24 uur van tevoren kun je kosteloos afzeggen of verzetten. Zeg je later af of kom je niet, dan wordt de sessie gerekend of afgeboekt van je rittenkaart."),
     "member": ("Moet ik lid zijn van Patrick's Gym?", "Nee. Je hoeft geen lid te zijn van de gym om met mij te trainen. Je betaalt alleen voor je personal trainingen. Wil je daarnaast ook zelf trainen bij Patrick's Gym? Daarvoor heb je wel een abonnement bij de gym nodig."),
@@ -744,10 +780,10 @@ EN["faq_page"] = {
     "h1": "Frequently asked questions",
     "lead": "Everything you want to know before your first session. Can't find your question? Send me a message.",
     "groups": [
-        ("Getting started", ["intro_what", "level", "bring", "english", "book"]),
+        ("Getting started", ["intro_what", "level", "bring", "english", "book", "minors"]),
         ("The training", ["one", "coaching", "how_often", "own", "results", "injury"]),
         ("Muay Thai", ["mt", "mt_expect", "beginners"]),
-        ("Prices and payment", ["price", "pay", "cancel"]),
+        ("Prices and payment", ["price", "pay", "valid", "cancel", "refund"]),
         ("Location and Performance Scan", ["where", "member", "scan_what"]),
     ],
 }
@@ -756,10 +792,10 @@ NL["faq_page"] = {
     "h1": "Veelgestelde vragen",
     "lead": "Alles wat je wilt weten voor je eerste training. Staat je vraag er niet bij? Stuur me een bericht.",
     "groups": [
-        ("Beginnen", ["intro_what", "level", "bring", "english", "book"]),
+        ("Beginnen", ["intro_what", "level", "bring", "english", "book", "minors"]),
         ("De training", ["one", "coaching", "how_often", "own", "results", "injury"]),
         ("Muay Thai", ["mt", "mt_expect", "beginners"]),
-        ("Prijzen en betalen", ["price", "pay", "cancel"]),
+        ("Prijzen en betalen", ["price", "pay", "valid", "cancel", "refund"]),
         ("Locatie en Performance Scan", ["where", "member", "scan_what"]),
     ],
 }
@@ -1123,5 +1159,73 @@ NL["meta"].update({
 for _L in (EN, NL):
     for _k, _v in _L["lp"].items():
         _L["meta"][_k] = {"title": _v["meta_title"], "desc": _v["meta_desc"]}
+
+# ---------------------------------------------------------------------------
+# Algemene voorwaarden, btw en extra FAQ (okt 2026)
+# ---------------------------------------------------------------------------
+
+EN["faq"]["items"].update({
+    "valid": ("How long is a 10-session package valid?", "Six months from the date of purchase. Can't train for a while because of an injury, illness or pregnancy? Let me know and I'll extend the package by the time you couldn't train. The package is personal and can't be transferred to someone else."),
+    "refund": ("Do I get my money back if I stop early?", "Not for sessions you simply don't use: you can still use them within the six months. If you permanently can't train for a medical reason, I refund the unused sessions; the sessions you did have are then charged at the single-session price. If you booked remotely, you also have a 14-day cooling-off period. The details are in the terms and conditions."),
+    "minors": ("Can I train with you if I'm under 16?", "Yes, with permission from a parent or guardian. They send the request or get in touch with me, and they're my contact for the training and the invoices."),
+})
+NL["faq"]["items"].update({
+    "valid": ("Hoe lang is een 10-rittenkaart geldig?", "Zes maanden vanaf de aankoopdatum. Kun je door een blessure, ziekte of zwangerschap een tijd niet trainen? Laat het me weten, dan verleng ik de kaart met de periode dat je niet kon trainen. De kaart is persoonlijk en niet overdraagbaar."),
+    "refund": ("Krijg ik geld terug als ik tussentijds stop?", "Niet voor sessies die je gewoon niet gebruikt: die kun je binnen de zes maanden nog opmaken. Kun je door een medische reden blijvend niet meer trainen, dan betaal ik de niet-gebruikte sessies terug; de sessies die je wel hebt gehad, reken ik dan tegen de losse prijs. Heb je op afstand geboekt, dan heb je ook 14 dagen bedenktijd. De details staan in de algemene voorwaarden."),
+    "minors": ("Kan ik bij jou trainen als ik jonger ben dan 16?", "Ja, met toestemming van je ouder of voogd. Die verstuurt de aanvraag of neemt contact met me op, en is mijn aanspreekpunt voor de training en de facturen."),
+})
+
+EN["terms"] = {
+    "eyebrow": "Terms",
+    "h1": "Terms and conditions",
+    "updated": "Last updated: 3 October 2026",
+    "lead": "In plain language: what you can expect from me, and what I expect from you.",
+    "sections": [
+        ("1. Who and what", ["These terms apply to all personal training, Muay Thai sessions, the Performance Scan and coaching by Casper Boekee Personal Training (Chamber of Commerce 89761286), Marius Bauerstraat 28, 1062 AR Amsterdam, at Patrick's Gym. By booking a session, package or scan you agree to these terms. The latest version is always on casperboekee.com."]),
+        ("2. Free intro", ["The 30-minute intro is free and without obligation."]),
+        ("3. Booking sessions", ["We plan sessions together, through WhatsApp, email or the contact form. A session is booked once I've confirmed it. If you arrive late, the session still ends at the agreed time."]),
+        ("4. Cancelling or rescheduling", ["You can cancel or reschedule a session free of charge up to 24 hours in advance. If you cancel later or don't show up, the session is charged or deducted from your package.", "Ill? Let me know as early as you can. With sudden illness or circumstances beyond your control I'll look for a fair solution, but that's at my discretion.", "If I have to cancel, we reschedule the session at no extra cost."]),
+        ("5. Prices and payment", ["Prices are listed on casperboekee.com and include 21% VAT. You'll receive an invoice by email; pay by iDEAL or bank transfer within 14 days.", "A package of 10 sessions and the Performance Scan are paid before the first session. Single sessions are invoiced afterwards. A price change never applies to a package you've already bought.", "If you don't pay on time, I'll send a reminder first. If payment still doesn't arrive, I can pause sessions until you've paid and charge the statutory collection costs and interest.", "For a coaching programme with a monthly fee, we agree the duration, fee and notice period in writing beforehand, for example by email or WhatsApp."]),
+        ("6. The 10-session package", ["A package of 10 sessions is valid for 6 months from the date of purchase. After that, any remaining sessions expire.", "Can't train for a while because of an injury, illness or pregnancy? Let me know and I'll extend the package by the period you couldn't train.", "The package is personal and can't be transferred to someone else: the assessment and the training plan are built around you. The assessment at the start and the re-tests are included in the package."]),
+        ("7. Stopping early and refunds", ["If you stop early, I don't refund the remaining sessions; you can still use them within the validity period.", "The exception: if you permanently can't train for a medical reason, for example on a doctor's advice, I refund the sessions you haven't used. The sessions you did have are then charged at the single-session price (€85) and deducted from what you paid."]),
+        ("8. Right of withdrawal when booking remotely", ["If you book as a consumer from a distance, for example through the contact form, WhatsApp or email, you have a 14-day cooling-off period from the day you book. In that period you can cancel without giving a reason, and I'll refund your payment within 14 days.", "Want to start within those 14 days? Then you expressly ask me to begin right away. If you still cancel within the cooling-off period, you pay for the sessions you've already had, at the single-session price, and I refund the rest. Once a package has been fully used within the cooling-off period, the right of withdrawal no longer applies."]),
+        ("9. Health and safety", ["Training always carries some risk of injury. Before your first session, tell me about injuries, complaints, medication, pregnancy and anything else that affects your training, and tell me straight away if something changes.", "With a medical condition or a recent injury, check with your GP or physiotherapist first. I may ask you for a doctor's approval before we start.", "I'm a personal trainer, not a doctor or physiotherapist. My sessions, measurements and advice are not a medical examination, diagnosis or treatment.", "Follow my instructions during sessions, stop when something doesn't feel right and tell me immediately. You don't train under the influence of alcohol or drugs."]),
+        ("10. Liability", ["I coach carefully. I'm not liable for injury or damage caused by health information you didn't share or didn't share fully, by not following my instructions, or by training without my supervision.", "If I am liable, my liability is limited to the amount you paid for the package or session concerned, as far as the law allows. This doesn't limit liability that by law cannot be limited, such as for intent or gross negligence.", "You're responsible for your own belongings at the gym. The house rules of Patrick's Gym apply to its facilities."]),
+        ("11. Under 16", ["If you're under 16, I need permission from a parent or guardian before the contact form, the intro and the training. The parent or guardian enters into the agreement and is my contact for payments."]),
+        ("12. Photos and videos", ["I sometimes take photos or videos during sessions, for example for your training plan or your progress, or for Instagram and this website. I only publish images in which you're recognisable with your prior permission, and you can withdraw it at any time. I'll then remove them as soon as possible."]),
+        ("13. Your data", ["How I handle your data is explained in the privacy statement on this website."]),
+        ("14. Changes, complaints and applicable law", ["I may update these terms. The version on casperboekee.com at the time of your booking applies to you.", "Have a complaint? Email info@casperboekee.com and we'll sort it out together. Dutch law applies to our agreement."]),
+    ],
+}
+NL["terms"] = {
+    "eyebrow": "Voorwaarden",
+    "h1": "Algemene voorwaarden",
+    "updated": "Laatst bijgewerkt: 3 oktober 2026",
+    "lead": "In gewone taal: wat je van mij kunt verwachten, en wat ik van jou verwacht.",
+    "sections": [
+        ("1. Voor wie en waarvoor", ["Deze voorwaarden gelden voor alle personal training, Muay Thai-trainingen, de Performance Scan en coaching van Casper Boekee Personal Training (KvK 89761286), Marius Bauerstraat 28, 1062 AR Amsterdam, bij Patrick's Gym. Door een sessie, pakket of scan te boeken, ga je akkoord met deze voorwaarden. De actuele versie staat altijd op casperboekee.com."]),
+        ("2. Gratis kennismaking", ["De kennismaking van 30 minuten is gratis en vrijblijvend."]),
+        ("3. Sessies boeken", ["We plannen sessies samen, via WhatsApp, e-mail of het contactformulier. Een sessie staat vast zodra ik hem heb bevestigd. Kom je te laat, dan eindigt de sessie toch op de afgesproken tijd."]),
+        ("4. Afzeggen of verzetten", ["Tot 24 uur van tevoren kun je een sessie kosteloos afzeggen of verzetten. Zeg je later af of kom je niet, dan wordt de sessie in rekening gebracht of van je rittenkaart afgeboekt.", "Ziek? Laat het zo vroeg mogelijk weten. Bij plotselinge ziekte of overmacht zoek ik een redelijke oplossing, maar dat is geen recht.", "Moet ik zelf afzeggen, dan verzetten we de sessie zonder extra kosten."]),
+        ("5. Prijzen en betalen", ["De prijzen staan op casperboekee.com en zijn inclusief 21% btw. Je ontvangt een factuur per e-mail; betalen kan met iDEAL of bankoverschrijving binnen 14 dagen.", "Een pakket van 10 sessies en de Performance Scan betaal je vóór de eerste sessie. Losse sessies factureer ik achteraf. Een prijswijziging geldt nooit voor een pakket dat je al hebt gekocht.", "Betaal je niet op tijd, dan stuur ik eerst een herinnering. Blijft betaling uit, dan kan ik sessies pauzeren tot je hebt betaald en de wettelijke incassokosten en rente in rekening brengen.", "Spreken we een coachingtraject met een maandbedrag af, dan leggen we de looptijd, het bedrag en de opzegtermijn vooraf schriftelijk vast, bijvoorbeeld per e-mail of WhatsApp."]),
+        ("6. De 10-rittenkaart", ["Een rittenkaart van 10 sessies is 6 maanden geldig vanaf de aankoopdatum. Daarna vervallen de resterende sessies.", "Kun je door een blessure, ziekte of zwangerschap een tijd niet trainen? Laat het me weten, dan verleng ik de kaart met de periode dat je niet kon trainen.", "De kaart is persoonlijk en niet overdraagbaar: het assessment en het trainingsplan zijn op jou afgestemd. Het assessment bij de start en de hertests zijn bij de kaart inbegrepen."]),
+        ("7. Tussentijds stoppen en geld terug", ["Stop je tussentijds, dan betaal ik de resterende sessies niet terug; je kunt ze binnen de geldigheid nog gebruiken.", "De uitzondering: kun je door een medische reden blijvend niet meer trainen, bijvoorbeeld op advies van een arts, dan betaal ik de sessies terug die je niet hebt gebruikt. De sessies die je wel hebt gehad, reken ik dan tegen de losse prijs (€85) en trek ik af van wat je hebt betaald."]),
+        ("8. Bedenktijd bij boeken op afstand", ["Boek je als consument op afstand, bijvoorbeeld via het contactformulier, WhatsApp of e-mail, dan heb je 14 dagen bedenktijd vanaf de dag van je boeking. In die tijd kun je zonder opgaaf van reden annuleren; je krijgt je betaling dan binnen 14 dagen terug.", "Wil je binnen die 14 dagen al starten? Dan vraag je mij uitdrukkelijk om direct te beginnen. Annuleer je daarna alsnog binnen de bedenktijd, dan betaal je voor de sessies die je al hebt gehad, tegen de losse prijs, en krijg je de rest terug. Is een pakket binnen de bedenktijd helemaal gebruikt, dan vervalt het herroepingsrecht."]),
+        ("9. Gezondheid en veiligheid", ["Trainen brengt altijd een risico op blessures met zich mee. Vertel me voor je eerste sessie over blessures, klachten, medicijngebruik, zwangerschap en andere dingen die invloed hebben op je training, en meld het meteen als er iets verandert.", "Bij een medische aandoening of een recente blessure overleg je eerst met je huisarts of fysiotherapeut. Ik kan je om een akkoord van een arts vragen voordat we starten.", "Ik ben personal trainer, geen arts of fysiotherapeut. Mijn trainingen, metingen en adviezen zijn geen medisch onderzoek, diagnose of behandeling.", "Volg tijdens de training mijn aanwijzingen op, stop als iets niet goed voelt en zeg het meteen. Je traint niet onder invloed van alcohol of drugs."]),
+        ("10. Aansprakelijkheid", ["Ik coach zorgvuldig. Ik ben niet aansprakelijk voor blessures of schade die ontstaan doordat je informatie over je gezondheid niet of niet volledig hebt gedeeld, doordat je mijn aanwijzingen niet hebt opgevolgd, of door trainen zonder mijn begeleiding.", "Ben ik wel aansprakelijk, dan is mijn aansprakelijkheid beperkt tot het bedrag dat je voor het betreffende pakket of de betreffende sessie hebt betaald, voor zover de wet dat toestaat. Dit beperkt geen aansprakelijkheid die volgens de wet niet beperkt mag worden, zoals bij opzet of grove nalatigheid.", "Voor je eigen spullen in de gym ben je zelf verantwoordelijk. Voor de faciliteiten van Patrick's Gym gelden de huisregels van de gym."]),
+        ("11. Jonger dan 16", ["Ben je jonger dan 16? Dan heb ik vooraf toestemming van je ouder of voogd nodig voor het contactformulier, de kennismaking en de training. De ouder of voogd sluit de overeenkomst en is mijn aanspreekpunt voor betalingen."]),
+        ("12. Foto's en video's", ["Ik maak soms foto's of video's tijdens trainingen, bijvoorbeeld voor je trainingsschema of je voortgang, of voor Instagram en deze website. Beelden waarop je herkenbaar bent, plaats ik alleen met jouw toestemming vooraf, en je kunt die altijd intrekken. Dan haal ik ze zo snel mogelijk weg."]),
+        ("13. Jouw gegevens", ["Hoe ik met je gegevens omga, lees je in de privacyverklaring op deze website."]),
+        ("14. Wijzigingen, klachten en toepasselijk recht", ["Ik kan deze voorwaarden aanpassen. Voor jou geldt de versie die op casperboekee.com stond op het moment van je boeking.", "Heb je een klacht? Mail naar info@casperboekee.com, dan lossen we het samen op. Op onze overeenkomst is Nederlands recht van toepassing."]),
+    ],
+}
+
+# Btw-regel bij de prijzen (afhankelijk van vat_mode in SITE)
+if SITE["vat_mode"] == "kor":
+    EN["prices"]["vat"] = "No VAT is charged (small businesses scheme, KOR)."
+    NL["prices"]["vat"] = "Er wordt geen btw gerekend (kleineondernemersregeling)."
+else:
+    EN["prices"]["vat"] = f"All prices include {SITE['vat_rate']}% VAT."
+    NL["prices"]["vat"] = f"Alle prijzen zijn inclusief {SITE['vat_rate']}% btw."
 
 LANGS = {"en": EN, "nl": NL}

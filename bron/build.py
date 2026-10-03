@@ -28,6 +28,7 @@ PAGES = {  # pagina -> sjabloon
     "contact": "contact.html",
     "privacy": "privacy.html",
     "disclaimer": "disclaimer.html",
+    "terms": "terms.html",
     "about": "about.html",
     "method": "method.html",
     "faq": "faq.html",
@@ -171,7 +172,7 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     # assets
-    for sub in ("css", "js"):
+    for sub in ("css", "js", "fonts"):
         shutil.copytree(HERE / "static" / sub, OUT / "assets" / sub)
     if (HERE / "static/video").exists():
         shutil.copytree(HERE / "static/video", OUT / "assets/video")
