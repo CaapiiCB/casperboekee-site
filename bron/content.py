@@ -36,7 +36,7 @@ SITE = {
     "vat_mode": "btw",
     "vat_rate": "21",
     # Btw-identificatienummer (NL123456789B01). Leeg = niet getoond. Invullen zodra bekend!
-    "vat_id": "",
+    "vat_id": "NL004754865B69",
     # Voorwaarden (ook gebruikt in teksten): rittenkaart geldig in maanden, betaaltermijn in dagen, minimumleeftijd zonder ouder.
     "pack_months": 6,
     "pay_days": 14,
