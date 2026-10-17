@@ -392,6 +392,8 @@ a:hover > .link .ico, a:hover .link .ico { transform: translateX(4px); }
 .site-footer a:not(.logo) { display: inline-flex; align-items: center; min-height: 2.25rem; color: var(--fg); text-decoration: none; justify-self: start; }
 .site-footer a:not(.logo):hover { color: var(--accent); }
 .site-footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; margin-top: 2.5rem; padding-block: 1.25rem 2rem; border-top: 1px solid var(--line); font-size: .9375rem; }
+.site-footer__legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.site-footer__legal a:hover { color: var(--accent); }
 @media (min-width: 800px) { .site-footer__in { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; } }
 
 /* Mobile CTA bar */

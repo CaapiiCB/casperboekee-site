@@ -16,6 +16,8 @@ SITE = {
     # Credit voor Mory (trainingsmaatje op de foto's). Leeg = geen vermelding.
     "credit_name": "Mory",
     "credit_url": "",
+    "photo_name": "Elisabeth Melchior",
+    "photo_url": "https://www.elisabethmelchior.com/",
     "street": "Marius Bauerstraat 28",
     "postcode": "1062 AR",
     "city": "Amsterdam",
@@ -244,6 +246,7 @@ EN = {
         "terms": "Terms",
         "vat": "VAT ID",
         "portal": "Client login",
+        "photo": "Photography",
     },
     "soon": "Coming soon",
     "scan_soon": {
@@ -579,6 +582,7 @@ NL = {
         "terms": "Voorwaarden",
         "vat": "Btw-id",
         "portal": "Klantomgeving",
+        "photo": "Fotografie",
     },
     "soon": "Binnenkort",
     "scan_soon": {

@@ -115,6 +115,9 @@
   </div>
   <div class="wrap site-footer__legal">
     <span>© {{ site.year }} Casper Boekee. {{ t.footer.rights }}</span>
+    {%- if site.photo_url %}
+    <span>{{ t.footer.photo }}: <a href="{{ site.photo_url }}" target="_blank" rel="noopener">{{ site.photo_name }}</a></span>
+    {%- endif %}
     <span>{{ t.footer.kvk }} {{ site.kvk }}{% if site.vat_mode == 'btw' and site.vat_id %} · {{ t.footer.vat }} {{ site.vat_id }}{% endif %}</span>
   </div>
 </footer>
